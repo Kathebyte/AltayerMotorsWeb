@@ -1,6 +1,8 @@
 
 package PersistenciaDatos;
 
+import backend.CustomerWeb;
+import backend.EmployeeWeb;
 import backend.Vehicle;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -88,6 +90,77 @@ public class ControladorDao {
         return ListVehicles;
         
     }
-    
-   
+    public static List<CustomerWeb> mostrarCustomers(){
+        includeDriver();
+        
+        List<CustomerWeb> listCustomer = new ArrayList<>();
+        
+        String query="select * from customer";
+        Conexion db_connect = new Conexion();
+        
+        try(
+           Connection conexion = db_connect.getConnection()){
+           PreparedStatement ps=conexion.prepareStatement(query);
+           ResultSet rs= ps.executeQuery();
+           
+           while(rs.next()){
+               
+               int idCustomer = rs.getInt(1);
+               String name = rs.getString(2);
+               String address = rs.getString(3);
+               String phone = rs.getString(4);
+               String email = rs.getString(5);
+               
+               CustomerWeb customerNew = new CustomerWeb(idCustomer, name, phone, address, email);
+               listCustomer.add(customerNew);
+            
+           }
+
+        }catch(SQLException ex){
+                System.out.println(ex);
+                System.out.println("Error printer list Customer");
+        }
+         
+         return listCustomer;
+         
+    }
+        
+    public static List<EmployeeWeb> mostrarEmployees(){
+        includeDriver();
+        List<EmployeeWeb> ListEmployees = new ArrayList<>();
+        
+        
+        String query="select * from employee";
+        Conexion db_connect = new Conexion();
+        
+        try(
+           Connection conexion = db_connect.getConnection()){
+           PreparedStatement ps=conexion.prepareStatement(query);
+           ResultSet rs= ps.executeQuery();
+
+
+                while (rs.next()){
+                    int customerId= rs.getInt(1);
+                    String name= rs.getString(2);
+                    String phoneNumber= rs.getString(3);
+                    String address= rs.getString(4);
+                    String email= rs.getString(5);
+                    double jobPosition = rs.getDouble(6);
+                    String prices = rs.getString(7);
+                    
+                    EmployeeWeb newEmployee = new EmployeeWeb(customerId, name, phoneNumber, address, email, jobPosition, prices);
+                    ListEmployees.add(newEmployee);
+            
+                }
+
+            }catch(SQLException ex){
+                    System.out.println(ex);
+                    System.out.println("Error printer list Customers");
+            }
+
+        return ListEmployees;
+        
+    }
+               
 }
+
