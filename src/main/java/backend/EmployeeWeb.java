@@ -7,17 +7,23 @@ package backend;
 
 public class EmployeeWeb extends UserWeb{
     
-    double salary;
+    String salary;
     String jobPosition;
     int idEmploployee;
 
-    public EmployeeWeb( int idEmployee, String name, String phoneNumber, String address, String email,double salary, String jobPosition) {
+    public EmployeeWeb( int idEmployee, String name, String phoneNumber, String address, String email,String salary, String jobPosition) {
         super(name, phoneNumber, address, email);
         this.idEmploployee=idEmployee;
         this.salary = salary;
         this.jobPosition = jobPosition;
     }
 
+    public EmployeeWeb( String name, String phoneNumber, String address, String email,String salary, String jobPosition) {
+        super(name, phoneNumber, address, email);
+    }
+
+ 
+   
     public int getIdEmploployee() {
         return idEmploployee;
     }
@@ -26,11 +32,11 @@ public class EmployeeWeb extends UserWeb{
         this.idEmploployee = idEmploployee;
     }
 
-    public double getSalary() {
+    public String getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(String salary) {
         this.salary = salary;
     }
 
@@ -41,8 +47,6 @@ public class EmployeeWeb extends UserWeb{
     public void setJobPosition(String jobPosition) {
         this.jobPosition = jobPosition;
     }
-
-    
-    
+  
 }
  

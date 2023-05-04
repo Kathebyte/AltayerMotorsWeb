@@ -5,7 +5,7 @@
 package Servlet;
 
 import PersistenciaDatos.ControladorDao;
-import backend.Vehicle;
+import backend.VehicleWeb;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -50,7 +50,7 @@ public class VehicleCreateServlet extends HttpServlet {
         String warrantyTime=request.getParameter("warrantyTime");
         String accidentHistory=request.getParameter("accidentHistory");
         
-        Vehicle vehicle = new Vehicle();
+        VehicleWeb vehicle = new VehicleWeb();
         
         double pricesV =0;
         if ( prices != null){

@@ -1,7 +1,7 @@
 package Servlet;
 
 import PersistenciaDatos.ControladorDao;
-import backend.Vehicle;
+import backend.VehicleWeb;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public class VehicleListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Vehicle> listaVehicles = new ArrayList<>();
+        List<VehicleWeb> listaVehicles = new ArrayList<>();
 
         listaVehicles = ControladorDao.mostrarVehicles();
 
@@ -50,7 +50,7 @@ public class VehicleListServlet extends HttpServlet {
         String warrantyTime = request.getParameter("warrantyTime");
         String accidentHistory = request.getParameter("accidentHistory");
 
-        Vehicle vehicle1 = new Vehicle();
+        VehicleWeb vehicle1 = new VehicleWeb();
 
         int prices1 = 0;
 

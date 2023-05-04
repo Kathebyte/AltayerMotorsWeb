@@ -3,7 +3,7 @@ package PersistenciaDatos;
 
 import backend.CustomerWeb;
 import backend.EmployeeWeb;
-import backend.Vehicle;
+import backend.VehicleWeb;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +23,7 @@ public class ControladorDao {
         }
     }
     
-    public static void createVehicledDB(Vehicle vehicle) {
+    public static void createVehicledDB(VehicleWeb vehicle) {
         includeDriver();
         
         Conexion db_connect = new Conexion();
@@ -53,9 +53,9 @@ public class ControladorDao {
         }
     }
 
-    public static List<Vehicle> mostrarVehicles(){
+    public static List<VehicleWeb> mostrarVehicles(){
         includeDriver();
-        List<Vehicle> ListVehicles = new ArrayList<>();
+        List<VehicleWeb> ListVehicles = new ArrayList<>();
 
         String query="select * from vehicle";
         Conexion db_connect = new Conexion();
@@ -77,7 +77,7 @@ public class ControladorDao {
                     String type_car= rs.getString(8);
                     String warrantyTime= rs.getString(9);
                     
-                    Vehicle vehicleNew = new Vehicle(carId,make, brand, year, miliage, color, prices, type_car, warrantyTime, warrantyTime);
+                    VehicleWeb vehicleNew = new VehicleWeb(carId,make, brand, year, miliage, color, prices, type_car, warrantyTime, warrantyTime);
                     ListVehicles.add(vehicleNew);
 
                 }
@@ -145,7 +145,7 @@ public class ControladorDao {
                     String phoneNumber= rs.getString(3);
                     String address= rs.getString(4);
                     String email= rs.getString(5);
-                    double jobPosition = rs.getDouble(6);
+                    String jobPosition = rs.getString(6);
                     String prices = rs.getString(7);
                     
                     EmployeeWeb newEmployee = new EmployeeWeb(customerId, name, phoneNumber, address, email, jobPosition, prices);
@@ -160,6 +160,35 @@ public class ControladorDao {
 
         return ListEmployees;
         
+    }
+    
+    public static void createEmployeeDB(EmployeeWeb employee) {
+        includeDriver();
+        
+        Conexion db_connect = new Conexion();
+        
+        try(Connection conexion = db_connect.getConnection()){
+            PreparedStatement ps=null;
+            
+            try{
+                String query= "insert into employee(name, phone_number, address, email, salary, job_position) VALUES (?,?,?,?,?,?)";
+                ps= conexion.prepareStatement(query);
+                ps.setString(1,employee.getName());
+                ps.setString(2,employee.getPhoneNumber());
+                ps.setString(3,employee.getAddress());
+                ps.setString(4,employee.getEmail());
+                ps.setString(5,employee.getSalary());
+                ps.setString(6,employee.getJobPosition());
+                
+                ps.executeUpdate();
+                db_connect.closeConection();
+                
+            }catch(SQLException ex){
+                System.out.println(ex);
+            }
+        }catch (SQLException e){
+            System.out.println(e);
+        }
     }
                
 }

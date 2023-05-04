@@ -4,7 +4,7 @@
     Author     : kathemacbook
 --%>
 
-<%@page import="backend.Vehicle"%>
+<%@page import="backend.VehicleWeb"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -35,8 +35,8 @@
                 <tbody>
 
                     <%
-                        List<Vehicle> listaVehicles = (List) request.getSession().getAttribute("listaVehicles");
-                        for (Vehicle vehiculo : listaVehicles) {
+                        List<VehicleWeb> listaVehicles = (List) request.getSession().getAttribute("listaVehicles");
+                        for (VehicleWeb vehiculo : listaVehicles) {
                     %>
                     <tr>
                         <th scope="row"> <%=vehiculo.getCarId()%></th>
