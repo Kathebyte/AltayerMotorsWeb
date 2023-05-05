@@ -15,39 +15,41 @@
     </head>
     <body>
         <form action="Create" method="POST">
-                <div class="container" >
-                    <h2 class="row my-4"> CREATE NEW EMPLOYEE </h2>
-                    <div class="row my-2">
-                        <label class="col-3">Name: </label>
-                        <input class="col-9" type="text" name="name">
-                    </div>
-                    <div class="row my-2">
-                        <label class="col-3">Phone Number: </label>
-                        <input class="col-9" type="text" name="phoneNumber">
-                    </div>
-                    <div class="row my-2">
-                        <label class="col-3">Address: </label>
-                        <input class="col-9" type="text" name="address">
-                    </div>
-                    <div class="row my-2">
-                        <label class="col-3">Email: </label>
-                        <input class="col-9" type="text" name="email">
-                    </div>
-                    <div class="row my-2">
-                        <label class="col-3">Salary: </label>
-                        <input class="col-9" type="text" name="salary">
-                    </div>
-                    <div class="row my-2">
-                        <label class="col-3">Job position: </label>
-                        <input class="col-9" type="text" name="jobPosition">
-                    </div>
-                        <div class="row py-4 my-2 mx-auto">
-                            <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-outline-primary">Save</button>
-                            </div>
-                        </div>
-                    </div> 
+            <div class="container" >
+                <h2 class="row my-4"> CREATE NEW EMPLOYEE </h2>
+                <div class="row my-2">
+                    <label class="col-3">Name: </label>
+                    <input class="col-9" type="text" name="name">
                 </div>
+                <div class="row my-2">
+                    <label class="col-3">Phone Number: </label>
+                    <input class="col-9" type="text" name="phoneNumber">
+                </div>
+                <div class="row my-2">
+                    <label class="col-3">Address: </label>
+                    <input class="col-9" type="text" name="address">
+                </div>
+                <div class="row my-2">
+                    <label class="col-3">Email: </label>
+                    <input class="col-9" type="text" name="email">
+                </div>
+                <div class="row my-2">
+                    <label class="col-3">Salary: </label>
+                    <input class="col-9" type="text" name="salary">
+                </div>
+                <div class="row my-2">
+                    <label class="col-3">Job position: </label>
+                    <input class="col-9" type="text" name="jobPosition">
+                </div>
+                <div class="row py-4 my-2 mx-auto">
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-outline-primary">Save</button>
+                    </div>
+                </div>
+            </div> 
+            <div class="btn-group">
+                    <a href="http://localhost:8080/AltayerMotorsWeb" class="btn btn-primary" aria-current="page">Menu</a>
+                  </div>
         </form>
     </body>
 </html>

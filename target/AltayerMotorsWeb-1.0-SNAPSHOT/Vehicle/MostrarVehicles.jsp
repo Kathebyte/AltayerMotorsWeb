@@ -53,6 +53,9 @@
 
                 </tbody>
             </table>
+            <div class="btn-group">
+                <a href="http://localhost:8080/AltayerMotorsWeb" class="btn btn-primary" aria-current="page">Menu</a>
+            </div>
 
         </div>
 

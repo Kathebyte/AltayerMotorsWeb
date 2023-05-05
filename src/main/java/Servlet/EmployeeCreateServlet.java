@@ -40,8 +40,9 @@ public class EmployeeCreateServlet extends HttpServlet {
             throws ServletException, IOException {
         
         String name = request.getParameter("name");
-        String phoneNumber =request.getParameter("phoneNumber");
+        
         String address =request.getParameter("address");
+        String phoneNumber =request.getParameter("phoneNumber");
         String email=request.getParameter("email");
         String salary=request.getParameter("salary");
         String jobPosition=request.getParameter("jobPosition");
@@ -54,8 +55,9 @@ public class EmployeeCreateServlet extends HttpServlet {
 //        }
         
         newEmployee.setName(name);
-        newEmployee.setPhoneNumber(phoneNumber);
+        
         newEmployee.setAddress(address);
+        newEmployee.setPhoneNumber(phoneNumber);
         newEmployee.setEmail(email);
         newEmployee.setSalary(salary);
         newEmployee.setJobPosition(jobPosition);

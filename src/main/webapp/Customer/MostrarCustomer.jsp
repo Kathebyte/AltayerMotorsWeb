@@ -26,7 +26,7 @@
                         <th scope="col">Phone number</th>
                         <th scope="col">Address</th>
                         <th scope="col">Email</th>
-                       
+
                     </tr>
                 </thead>
                 <tbody>
@@ -46,6 +46,9 @@
 
                 </tbody>
             </table>
+            <div class="btn-group">
+                <a href="http://localhost:8080/AltayerMotorsWeb" class="btn btn-primary" aria-current="page">Menu</a>
+            </div>
 
         </div>
 

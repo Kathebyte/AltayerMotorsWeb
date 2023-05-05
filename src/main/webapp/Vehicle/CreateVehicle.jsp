@@ -15,51 +15,54 @@
     </head>
     <body>
         <form action="Create" method="POST">
-                <div class="container" >
-                    <h2 class="row my-4"> CREATE NEW VEHICLE </h2>
-                    <div class="row my-2">
-                        <label class="col-3">Make </label>
-                        <input class="col-9" type="text" name="make">
-                    </div>
-                    <div class="row my-2">
-                        <label class="col-3">Brand </label>
-                        <input class="col-9" type="text" name="brand">
-                    </div>
-                    <div class="row my-2">
-                        <label class="col-3">Year: </label>
-                        <input class="col-9" type="text" name="year">
-                    </div>
-                    <div class="row my-2">
-                        <label class="col-3">Miliage: </label>
-                        <input class="col-9" type="text" name="miliage">
-                    </div>
-                    <div class="row my-2">
-                        <label class="col-3">Color: </label>
-                        <input class="col-9" type="text" name="color">
-                    </div>
-                    <div class="row my-2">
-                        <label class="col-3">Prices: </label>
-                        <input class="col-9" type="text" name="prices">
-                    </div>
-                    <div class="row my-2">
-                        <label class="col-3">Type Car: </label>
-                        <input class="col-9" type="text" name="typeCar">
-                    </div>
-                    <div class="row my-2">
-                        <label class="col-3">Warranty Time: </label>
-                        <input class="col-9" type="text" name="warrantyTime">
-                    </div>
-                    <div class="row my-2 ">
-                        <label class="col-3">Accident History: </label>
-                        <input class="col-9" type="text" name="accidentHistory">
-
-                        <div class="row py-4 my-2 mx-auto">
-                            <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-outline-primary">Save</button>
-                            </div>
-                        </div>
-                    </div> 
+            <div class="container" >
+                <h2 class="row my-4"> CREATE NEW VEHICLE </h2>
+                <div class="row my-2">
+                    <label class="col-3">Make </label>
+                    <input class="col-9" type="text" name="make">
                 </div>
+                <div class="row my-2">
+                    <label class="col-3">Brand </label>
+                    <input class="col-9" type="text" name="brand">
+                </div>
+                <div class="row my-2">
+                    <label class="col-3">Year: </label>
+                    <input class="col-9" type="text" name="year">
+                </div>
+                <div class="row my-2">
+                    <label class="col-3">Miliage: </label>
+                    <input class="col-9" type="text" name="miliage">
+                </div>
+                <div class="row my-2">
+                    <label class="col-3">Color: </label>
+                    <input class="col-9" type="text" name="color">
+                </div>
+                <div class="row my-2">
+                    <label class="col-3">Prices: </label>
+                    <input class="col-9" type="text" name="prices">
+                </div>
+                <div class="row my-2">
+                    <label class="col-3">Type Car: </label>
+                    <input class="col-9" type="text" name="typeCar">
+                </div>
+                <div class="row my-2">
+                    <label class="col-3">Warranty Time: </label>
+                    <input class="col-9" type="text" name="warrantyTime">
+                </div>
+                <div class="row my-2 ">
+                    <label class="col-3">Accident History: </label>
+                    <input class="col-9" type="text" name="accidentHistory">
+
+                    <div class="row py-4 my-2 mx-auto">
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-outline-primary">Save</button>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+             <div class="btn-group">
+                    <a href="http://localhost:8080/AltayerMotorsWeb" class="btn btn-primary" aria-current="page">Menu</a>
+                  </div>
         </form>
     </body>
 </html>
