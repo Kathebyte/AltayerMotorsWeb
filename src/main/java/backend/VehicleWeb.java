@@ -4,23 +4,35 @@ package backend;
 
 public class VehicleWeb {
     
-    private int carId;
-    private String make;
-    private String brand;
-    private String year;
-    private String miliage;
-    private String color;
-    private double prices;
-    private String typeCar;
-    private String warrantyTime;
-    private String accidentHistory;
-    
+     int carId;
+     String make;
+     String brand;
+     String year;
+     String miliage;
+     String color;
+     int prices;
+     String typeCar;
+     String warrantyTime;
+     String accidentHistory;
 
-    public VehicleWeb(){
+    public VehicleWeb(int carId, String make, String brand, String year, String miliage, String color, int prices, String typeCar, String warrantyTime, String accidentHistory) {
+        this.carId = carId;
+        this.make = make;
+        this.brand = brand;
+        this.year = year;
+        this.miliage = miliage;
+        this.color = color;
+        this.prices = prices;
+        this.typeCar = typeCar;
+        this.warrantyTime = warrantyTime;
+        this.accidentHistory = accidentHistory;
     }
-
-    public VehicleWeb(int carId,String make, String brand, String year, String miliage, String color, double prices, String typeCar, String warrantyTime, String accidentHistory) {
-        this.carId=carId;
+    
+    public VehicleWeb() {
+    }
+    
+      public VehicleWeb( String make, String brand, String year, String miliage, String color, int prices, String typeCar, String warrantyTime, String accidentHistory) {
+          
         this.make = make;
         this.brand = brand;
         this.year = year;
@@ -80,11 +92,11 @@ public class VehicleWeb {
         this.color = color;
     }
 
-    public double getPrices() {
+    public int getPrices() {
         return prices;
     }
 
-    public void setPrices(double prices) {
+    public void setPrices(int prices) {
         this.prices = prices;
     }
 

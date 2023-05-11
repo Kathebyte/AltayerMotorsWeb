@@ -4,7 +4,7 @@
  */
 package Servlet;
 
-import PersistenciaDatos.ControladorDao;
+import PersistenciaDatos.VehicleDao;
 import backend.VehicleWeb;
 import java.io.IOException;
 
@@ -50,27 +50,27 @@ public class VehicleCreateServlet extends HttpServlet {
         String warrantyTime=request.getParameter("warrantyTime");
         String accidentHistory=request.getParameter("accidentHistory");
         
-        VehicleWeb vehicle = new VehicleWeb();
+        VehicleWeb newVehicle= new VehicleWeb(make, brand, year, miliage, color, 0, typeCar, warrantyTime, accidentHistory);
         
-        double pricesV =0;
+        int pricesV =0;
         if ( prices != null){
-            pricesV = Double.parseDouble(prices);
+            pricesV = Integer.parseInt(prices);
         }
         
-        vehicle.setMake(make);
-        vehicle.setBrand(brand);
-        vehicle.setYear(year);
-        vehicle.setMiliage(miliage);
-        vehicle.setColor(color);
-        vehicle.setPrices(pricesV);
-        vehicle.setTypeCar(typeCar);
-        vehicle.setWarrantyTime(warrantyTime);
-        vehicle.setAccidentHistory(accidentHistory);
+        newVehicle.setMake(make);
+        newVehicle.setBrand(brand);
+        newVehicle.setYear(year);
+        newVehicle.setMiliage(miliage);
+        newVehicle.setColor(color);
+        newVehicle.setPrices(pricesV);
+        newVehicle.setTypeCar(typeCar);
+        newVehicle.setWarrantyTime(warrantyTime);
+        newVehicle.setAccidentHistory(accidentHistory);
         
-        ControladorDao.createVehicledDB(vehicle);
+        VehicleDao.createVehicledDB(newVehicle);
         
         HttpSession misesion = request.getSession();
-        misesion.setAttribute("vehicle", vehicle);
+        misesion.setAttribute("vehicle", newVehicle);
 
         response.sendRedirect("List");
       

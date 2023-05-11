@@ -1,6 +1,6 @@
 package Servlet;
 
-import PersistenciaDatos.ControladorDao;
+import PersistenciaDatos.VehicleDao;
 import backend.VehicleWeb;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class VehicleListServlet extends HttpServlet {
             throws ServletException, IOException {
         List<VehicleWeb> listaVehicles = new ArrayList<>();
 
-        listaVehicles = ControladorDao.mostrarVehicles();
+        listaVehicles = VehicleDao.mostrarVehicles();
 
         HttpSession misesion = request.getSession();
         misesion.setAttribute("listaVehicles", listaVehicles);
@@ -43,13 +43,13 @@ public class VehicleListServlet extends HttpServlet {
         String make = request.getParameter("make");
         String brand = request.getParameter("brand");
         String year = request.getParameter("year");
-        String miliage = request.getParameter("miliage");
         String color = request.getParameter("color");
         String prices = request.getParameter("prices");
-        String typeCar = request.getParameter("typeCar");
+        String miliage = request.getParameter("miliage");
         String warrantyTime = request.getParameter("warrantyTime");
         String accidentHistory = request.getParameter("accidentHistory");
-
+        String typeCar = request.getParameter("typeCar");
+        
         VehicleWeb vehicle1 = new VehicleWeb();
 
         int prices1 = 0;

@@ -4,10 +4,10 @@
  */
 package Servlet;
 
-import PersistenciaDatos.ControladorDao;
+
+import PersistenciaDatos.CustomerDao;
 import backend.CustomerWeb;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -56,7 +56,7 @@ public class CustomerCreateServlet extends HttpServlet {
         customerNew.setAddress(address);
         customerNew.setEmail(email);
         
-        ControladorDao.createCustomer(customerNew);
+        CustomerDao.createCustomer(customerNew);
         
         HttpSession misesion = request.getSession();
         misesion.setAttribute("customer", customerNew);

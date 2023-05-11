@@ -15,10 +15,11 @@ public class CustomerWeb extends UserWeb{
         this.id = id;
     }
 
-    public CustomerWeb(String name,  String address,String phoneNumber, String email) {
-        super(name,  address,phoneNumber, email);
+    public CustomerWeb(String name, String phoneNumber, String address, String email) {
+        super(name, phoneNumber, address, email);
     }
-    
+
+   
     
 
     public int getId() {

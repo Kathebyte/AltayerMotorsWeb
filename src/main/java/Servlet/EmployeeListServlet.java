@@ -5,7 +5,8 @@ package Servlet;
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-import PersistenciaDatos.ControladorDao;
+
+import PersistenciaDatos.EmployeeDao;
 import backend.EmployeeWeb;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,11 +34,11 @@ public class EmployeeListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
         
         List<EmployeeWeb> listaEmployee = new ArrayList<>();
         
-        listaEmployee = ControladorDao.mostrarEmployees();
+        listaEmployee = EmployeeDao.mostrarEmployees();
         HttpSession misesion = request.getSession();
         misesion.setAttribute("listaEmployee", listaEmployee);
         response.sendRedirect("MostrarEmployee.jsp");

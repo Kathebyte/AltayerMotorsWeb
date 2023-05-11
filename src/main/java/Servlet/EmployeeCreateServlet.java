@@ -4,7 +4,7 @@
  */
 package Servlet;
 
-import PersistenciaDatos.ControladorDao;
+import PersistenciaDatos.EmployeeDao;
 import backend.EmployeeWeb;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -40,30 +40,26 @@ public class EmployeeCreateServlet extends HttpServlet {
             throws ServletException, IOException {
         
         String name = request.getParameter("name");
-        
-        String address =request.getParameter("address");
         String phoneNumber =request.getParameter("phoneNumber");
+        String address =request.getParameter("address");
         String email=request.getParameter("email");
-        String salary=request.getParameter("salary");
+        String user=request.getParameter("user");
+        String state=request.getParameter("state");
         String jobPosition=request.getParameter("jobPosition");
+        String salary=request.getParameter("salary");
         
-        EmployeeWeb newEmployee = new EmployeeWeb(name, phoneNumber, address, email, salary, jobPosition);
-        
-//        double salary1 = 0;
-//        if(salary != null ){
-//            salary1 = Double.parseDouble(salary);
-//        }
+        EmployeeWeb newEmployee = new EmployeeWeb(name, phoneNumber, address, email, salary, jobPosition, user, state);
         
         newEmployee.setName(name);
-        
-        newEmployee.setAddress(address);
         newEmployee.setPhoneNumber(phoneNumber);
+        newEmployee.setAddress(address);
         newEmployee.setEmail(email);
-        newEmployee.setSalary(salary);
+        newEmployee.setUser(user);
+        newEmployee.setState(state);
         newEmployee.setJobPosition(jobPosition);
+        newEmployee.setSalary(salary);
         
-        
-        ControladorDao.createEmployeeDB(newEmployee);
+        EmployeeDao.createEmployeeDB(newEmployee);
         
         HttpSession misesion = request.getSession();
         misesion.setAttribute("employee", newEmployee);

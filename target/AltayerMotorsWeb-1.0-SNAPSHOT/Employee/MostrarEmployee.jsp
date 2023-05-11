@@ -22,31 +22,37 @@
             <table class="table table-striped table-hover ">
                 <thead>
                     <tr>
-                        <th scope="col">Id #</th>
+                        <th scope="col">Id#</th>
+                        <th scope="col">User</th>
                         <th scope="col">Name</th>
                         <th scope="col">Phone number</th>
                         <th scope="col">Address</th>
                         <th scope="col">Email address</th>
-                        <th scope="col">Salary</th>
+                        <th scope="col">State</th>
                         <th scope="col">Job Position</th>
+                        <th scope="col">Salary</th>
+                        
                     </tr>
                 </thead>
                 
                 <tbody>
-
-                    <%
+                    <%  
                         List<EmployeeWeb>listaEmployee = (List) request.getSession().getAttribute("listaEmployee");
                             for (EmployeeWeb employee : listaEmployee) {
              
                     %>
                     <tr>
+                        
                         <th scope="row"> <%=employee.getIdEmploployee()%></th>
+                        <th scope="row"> <%=employee.getUser()%></th>
                         <th scope="row"> <%=employee.getName()%></th>
-                        <th scope="row"> <%=employee.getAddress()%></th>
                         <th scope="row"> <%=employee.getPhoneNumber()%></th>
+                        <th scope="row"> <%=employee.getAddress()%></th>
                         <th scope="row"> <%=employee.getEmail()%></th>
-                        <th scope="row"> <%=employee.getSalary()%></th>
+                        <th scope="row"> <%=employee.getState()%></th>
                         <th scope="row"> <%=employee.getJobPosition()%></th>
+                        <th scope="row"> <%=employee.getSalary()%></th>
+                        
                     </tr>
                     <% }%>
                   

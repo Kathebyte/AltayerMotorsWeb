@@ -20,10 +20,14 @@ public class Sales {
     public Sales() {
     }
 
-    public Sales(int idVehicle, int idCustomer, int idEmployee) {
+ 
+    public Sales(int idVenta, int idVehicle, int idCustomer, int idEmployee, int comision, int precioVenta) {
+        this.idVenta = idVenta;
         this.idVehicle = idVehicle;
         this.idCustomer = idCustomer;
         this.idEmployee = idEmployee;
+        this.comision = comision;
+        this.precioVenta = precioVenta;
     }
 
     public int getIdVehicle() {
@@ -56,6 +60,22 @@ public class Sales {
 
     public void setComision(int comision) {
         this.comision = comision;
+    }
+
+    public int getIdVenta() {
+        return idVenta;
+    }
+
+    public void setIdVenta(int idVenta) {
+        this.idVenta = idVenta;
+    }
+
+    public int getPrecioVenta() {
+        return precioVenta;
+    }
+
+    public void setPrecioVenta(int precioVenta) {
+        this.precioVenta = precioVenta;
     }
     
     

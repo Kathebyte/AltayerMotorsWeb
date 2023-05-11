@@ -25,11 +25,13 @@
                         <th scope="col">Make</th>
                         <th scope="col">Brand</th>
                         <th scope="col">Year</th>
-                        <th scope="col">Mileage</th>
                         <th scope="col">Color</th>
                         <th scope="col">Prices</th>
-                        <th scope="col">Car Type</th>
+                        <th scope="col">Miliage</th>
                         <th scope="col">Warranty Time</th>
+                        <th scope="col">Accident History</th>
+                        <th scope="col">Type Car</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -43,11 +45,12 @@
                         <td> <%=vehiculo.getMake()%> </td>
                         <td> <%=vehiculo.getBrand()%> </td>
                         <td> <%=vehiculo.getYear()%></td>
-                        <td> <%=vehiculo.getMiliage()%></td>
                         <td> <%=vehiculo.getColor()%></td>
                         <td> <%=vehiculo.getPrices()%></td>
-                        <td> <%=vehiculo.getTypeCar()%></td>
+                        <td> <%=vehiculo.getMiliage()%></td>
                         <td> <%=vehiculo.getWarrantyTime()%></td>
+                        <td> <%=vehiculo.getAccidentHistory()%></td>
+                        <td> <%=vehiculo.getTypeCar()%></td>
                     </tr>
                     <% }%>
 

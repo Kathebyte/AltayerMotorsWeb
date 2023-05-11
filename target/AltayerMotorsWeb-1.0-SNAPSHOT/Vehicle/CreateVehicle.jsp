@@ -15,54 +15,85 @@
     </head>
     <body>
         <form action="Create" method="POST">
-            <div class="container" >
-                <h2 class="row my-4"> CREATE NEW VEHICLE </h2>
+            <div class="container">
+                <h2 class="row my-4">CREATE NEW VEHICLE</h2>
                 <div class="row my-2">
-                    <label class="col-3">Make </label>
-                    <input class="col-9" type="text" name="make">
-                </div>
-                <div class="row my-2">
-                    <label class="col-3">Brand </label>
-                    <input class="col-9" type="text" name="brand">
-                </div>
-                <div class="row my-2">
-                    <label class="col-3">Year: </label>
-                    <input class="col-9" type="text" name="year">
-                </div>
-                <div class="row my-2">
-                    <label class="col-3">Miliage: </label>
-                    <input class="col-9" type="text" name="miliage">
-                </div>
-                <div class="row my-2">
-                    <label class="col-3">Color: </label>
-                    <input class="col-9" type="text" name="color">
-                </div>
-                <div class="row my-2">
-                    <label class="col-3">Prices: </label>
-                    <input class="col-9" type="text" name="prices">
-                </div>
-                <div class="row my-2">
-                    <label class="col-3">Type Car: </label>
-                    <input class="col-9" type="text" name="typeCar">
-                </div>
-                <div class="row my-2">
-                    <label class="col-3">Warranty Time: </label>
-                    <input class="col-9" type="text" name="warrantyTime">
-                </div>
-                <div class="row my-2 ">
-                    <label class="col-3">Accident History: </label>
-                    <input class="col-9" type="text" name="accidentHistory">
-
-                    <div class="row py-4 my-2 mx-auto">
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-outline-primary">Save</button>
-                        </div>
+                    <label class="col-3 col-form-label">Make</label>
+                    <div class="col-9">
+                        <input class="form-control" type="text" name="make">
                     </div>
-                </div> 
+                </div>
+                <div class="row my-2">
+                    <label class="col-3 col-form-label">Brand</label>
+                    <div class="col-9">
+                        <input class="form-control" type="text" name="brand">
+                    </div>
+                </div>
+                <div class="row my-2">
+                    <label class="col-3 col-form-label">Year</label>
+                    <div class="col-9">
+                        <input class="form-control" type="text" name="year">
+                    </div>
+                </div>
+                <div class="row my-2">
+                    <label class="col-3 col-form-label">Mileage</label>
+                    <div class="col-9">
+                        <input class="form-control" type="text" name="miliage">
+                    </div>
+                </div>
+                <div class="row my-2">
+                    <label class="col-3 col-form-label">Color</label>
+                    <div class="col-9">
+                        <input class="form-control" type="text" name="color">
+                    </div>
+                </div>
+                <div class="row my-2">
+                    <label class="col-3 col-form-label">Price</label>
+                    <div class="col-9">
+                        <input class="form-control" type="text" name="prices">
+                        
+                    </div>
+                </div>
+                <div class="form-group row my-2">
+                    <label for="typeCar" class="col-3 col-form-label">Type Car</label>
+                    <div class="col-9">
+                        <select class="form-control" id="typeCar" name="typeCar">
+                            <option> </option>
+                            <option>Coupe</option>
+                            <option>Sports Car</option>
+                            <option>Pickup Truck</option>
+                            <option>SUV</option>
+                            <option>Luxury</option>
+                            <option>Convertible</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row my-2">
+                    <label class="col-3 col-form-label">Warranty Time</label>
+                    <div class="col-9">
+                        <input class="form-control" type="text" name="warrantyTime">
+                    </div>
+                </div>
+                <div class="row my-2">
+                    <label class="col-3 col-form-label">Accident History</label>
+                    <div class="col-9">
+                        <select class="form-control" id="accidentHistory" name="accidentHistory">
+                            <<option> </option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                        <div>
+                    </div>
+                </div>
+                <div class="row py-4 my-2 mx-auto">
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-outline-primary">Save</button>
+                    </div>
+                </div>
             </div>
-             <div class="btn-group">
-                    <a href="http://localhost:8080/AltayerMotorsWeb" class="btn btn-primary" aria-current="page">Menu</a>
-                  </div>
         </form>
+        <div class="btn-group">
+            <a href="http://localhost:8080/AltayerMotorsWeb" class="btn btn-primary" aria-current="page">Menu</a>
+        </div>
     </body>
 </html>

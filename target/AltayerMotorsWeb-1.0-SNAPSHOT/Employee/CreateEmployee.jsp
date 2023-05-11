@@ -33,13 +33,25 @@
                     <label class="col-3">Email: </label>
                     <input class="col-9" type="text" name="email">
                 </div>
-                <div class="row my-2">
-                    <label class="col-3">Salary: </label>
-                    <input class="col-9" type="text" name="salary">
-                </div>
+               
                 <div class="row my-2">
                     <label class="col-3">Job position: </label>
                     <input class="col-9" type="text" name="jobPosition">
+                </div>
+                 <div class="row my-2">
+                    <label class="col-3">User: </label>
+                    <input class="col-9" type="text" name="user">
+                </div>
+                <div class="row my-2">
+                <label for="states">State</label>
+                <select class="form-control col-3  " id="state" name="state">
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
+                </select>
+                </div>
+                 <div class="row my-2">
+                    <label class="col-3">Salary: </label>
+                    <input class="col-9" type="text" name="salary">
                 </div>
                 <div class="row py-4 my-2 mx-auto">
                     <div class="d-grid gap-2">

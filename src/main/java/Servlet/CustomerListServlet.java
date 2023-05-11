@@ -4,10 +4,10 @@
  */
 package Servlet;
 
-import PersistenciaDatos.ControladorDao;
+
+import PersistenciaDatos.CustomerDao;
 import backend.CustomerWeb;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -35,7 +35,7 @@ public class CustomerListServlet extends HttpServlet {
   
         List<CustomerWeb>listaCustomers = new ArrayList<>();
         
-        listaCustomers = ControladorDao.mostrarCustomers();
+        listaCustomers = CustomerDao.mostrarCustomers();
         HttpSession misesion = request.getSession();
         misesion.setAttribute("listaCustomers", listaCustomers);
         response.sendRedirect("MostrarCustomer.jsp");
