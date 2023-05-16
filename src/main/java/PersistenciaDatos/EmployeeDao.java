@@ -107,4 +107,55 @@ public class EmployeeDao {
     }
 
     
+    public static void updateEmployee(EmployeeWeb employee){
+        
+     includeDriver();
+
+        Conexion db_connect = new Conexion();
+
+        try (Connection conexion = db_connect.getConnection()) {
+            PreparedStatement ps = null;
+
+            try {
+                String query = "update employee set name=?, phone_number=?, address=?, email=>, user=?, state=?, job_position=?, salary=?) where id_employee=?";
+                ps = conexion.prepareStatement(query);
+                ps.setString(1, employee.getName());
+                ps.setString(2, employee.getPhoneNumber());
+                ps.setString(3, employee.getAddress());
+                ps.setString(4, employee.getEmail());
+                ps.setString(5, employee.getJobPosition());
+                ps.setString(6, employee.getUser());
+                ps.setString(7, employee.getState());
+                ps.setString(8, employee.getSalary());
+                ps.setInt(9,employee.getIdEmploployee());
+
+                ps.executeUpdate();
+                db_connect.closeConection();
+
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    
+    public static void deleteEmployee(int id_employee){
+        includeDriver();
+
+        Conexion db_connect = new Conexion();
+        String query="delete from employee where id_employee = ?" ;
+        
+        try (Connection conexion = db_connect.getConnection()) {
+            PreparedStatement ps = conexion.prepareStatement(query);
+            ps.setInt(1,id_employee);
+            ps.executeUpdate();
+            
+          
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            
+        }
+    }
 }

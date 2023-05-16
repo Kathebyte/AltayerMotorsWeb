@@ -32,6 +32,7 @@
                         <th scope="col">Job Position</th>
                         <th scope="col">Salary</th>
                         
+                        
                     </tr>
                 </thead>
                 
@@ -52,6 +53,13 @@
                         <th scope="row"> <%=employee.getState()%></th>
                         <th scope="row"> <%=employee.getJobPosition()%></th>
                         <th scope="row"> <%=employee.getSalary()%></th>
+                        <td>
+                            <form action="Delete" method="POST">
+                                <input type="hidden" name="idUser" value="<%=employee.getIdEmploployee() %>">
+                                <button class="btn btn-danger" type="submit">Delete</button>
+                                </form>
+    </tr>
+                      
                         
                     </tr>
                     <% }%>
