@@ -20,48 +20,48 @@
                 <div class="row my-2">
                     <label class="col-3">Name: </label>
                     <input class="col-9" type="text" name="name">
-                </div>
+                    </div>
                 <div class="row my-2">
                     <label class="col-3">Phone Number: </label>
                     <input class="col-9" type="text" name="phoneNumber">
-                </div>
+                    </div>
                 <div class="row my-2">
                     <label class="col-3">Address: </label>
                     <input class="col-9" type="text" name="address">
-                </div>
+                    </div>
                 <div class="row my-2">
                     <label class="col-3">Email: </label>
                     <input class="col-9" type="text" name="email">
-                </div>
-               
+                    </div>
+
                 <div class="row my-2">
                     <label class="col-3">Job position: </label>
                     <input class="col-9" type="text" name="jobPosition">
-                </div>
-                 <div class="row my-2">
+                    </div>
+                <div class="row my-2">
                     <label class="col-3">User: </label>
                     <input class="col-9" type="text" name="user">
-                </div>
+                    </div>
                 <div class="row my-2">
                 <label for="states">State</label>
                 <select class="form-control col-3  " id="state" name="state">
                   <option value="active">Active</option>
                   <option value="inactive">Inactive</option>
-                </select>
-                </div>
-                 <div class="row my-2">
+                        </select>
+                    </div>
+                <div class="row my-2">
                     <label class="col-3">Salary: </label>
                     <input class="col-9" type="text" name="salary">
-                </div>
+                    </div>
                 <div class="row py-4 my-2 mx-auto">
                     <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-outline-primary">Save</button>
                     </div>
                 </div>
-            </div> 
-            <div class="btn-group">
-                    <a href="http://localhost:8080/AltayerMotorsWeb" class="btn btn-primary" aria-current="page">Menu</a>
-                  </div>
+            </div>
+        <div class="btn-group">
+            <a href="http://localhost:8080/AltayerMotorsWeb" class="btn btn-primary" aria-current="page">Menu</a>
+        </div>
         </form>
     </body>
 </html>

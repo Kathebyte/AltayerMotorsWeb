@@ -3,10 +3,14 @@ Servlet/CustomerCreateServlet.class
 PersistenciaDatos/CustomerDao.class
 Servlet/ValidarServlet.class
 PersistenciaDatos/db_connect.class
+backend/EmployeeWeb.class
 backend/Sales.class
 Servlet/VehicleListServlet.class
+Servlet/Employee/EmployeeListServlet.class
 PersistenciaDatos/Conexion.class
 Servlet/VehicleCreateServlet.class
+PersistenciaDatos/EmployeeDao.class
+Servlet/Employee/EmployeeCreateServlet.class
 PersistenciaDatos/VehicleDao.class
 Servlet/Employee/EmployeeDeleteServlet.class
 backend/CustomerWeb.class
