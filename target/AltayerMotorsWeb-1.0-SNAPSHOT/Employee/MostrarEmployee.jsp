@@ -19,6 +19,11 @@
     <body>
         <div class="container">
             <h1 class="display-3">All Employees</h1>
+            <% if (request.getAttribute("message") != null) { %>
+            <div class="alert alert-success" role="alert">
+                <%= request.getAttribute("message") %>
+            </div>
+    <% } %>
             <table class="table table-striped table-hover ">
                 <thead>
                     <tr>
@@ -57,6 +62,7 @@
                             <form action="Delete" method="POST">
                                 <input type="hidden" name="idUser" value="<%=employee.getIdEmploployee() %>">
                                 <button class="btn btn-danger" type="submit">Delete</button>
+                                
                                 </form>
     </tr>
                       

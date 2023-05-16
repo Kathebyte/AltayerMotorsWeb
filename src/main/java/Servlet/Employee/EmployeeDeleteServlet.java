@@ -36,6 +36,7 @@ public class EmployeeDeleteServlet extends HttpServlet {
         List<EmployeeWeb> listEmployee = EmployeeDao.mostrarEmployees();
         request.setAttribute("listEmployee", listEmployee);
         
+        request.setAttribute("message", "Employee deleted successfully");
         request.getRequestDispatcher("MostrarEmployee.jsp").forward(request, response);
     }
 
