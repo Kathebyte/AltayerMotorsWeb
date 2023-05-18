@@ -20,10 +20,10 @@
             <h1 class="display-3">All vehicles</h1>
             <% if (request.getAttribute("message") != null) {%>
             <div class="alert alert-success" role="alert">
-            <%= request.getAttribute("message")%>
+                <%= request.getAttribute("message")%>
             </div>
-           <% } %>
-           
+            <% } %>
+
             <table class="table table-hover table-md table-responsive-sm">
                 <thead>
                     <tr>
@@ -37,7 +37,7 @@
                         <th scope="col">Warranty Time</th>
                         <th scope="col">Accident History</th>
                         <th scope="col">Type Car</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
@@ -61,7 +61,13 @@
                             <form action="Delete" method="POST">
                                 <input type="hidden" name="carId" value="<%=vehiculo.getCarId()%>">
                                 <button class="btn btn-danger" type="submit">Delete</button>
+                            </form>
 
+                        </td>
+                        <td>
+                            <form action="Update" method="GET">
+                                <input type="hidden" name="carIdUpdate" value="<%=vehiculo.getCarId()%>">
+                                <button class="btn btn-primary" type="submit">Update</button>
                             </form>
                         </td>
                     </tr>
@@ -70,9 +76,9 @@
                 </tbody>
             </table>
             <div class="btn-group">
-                        <a href=CreateVehicle.jsp class="btn btn-primary" aria-current="page">Create Vehicle</a>
+                <a href=CreateVehicle.jsp class="btn btn-primary" aria-current="page">Create Vehicle</a>
             </div>        
-                    
+
             <div class="btn-group">
                 <a href="http://localhost:8080/AltayerMotorsWeb" class="btn btn-primary" aria-current="page">Menu</a>
             </div>

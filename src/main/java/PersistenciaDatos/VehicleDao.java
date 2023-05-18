@@ -1,6 +1,7 @@
 package PersistenciaDatos;
 
 
+import backend.EmployeeWeb;
 import backend.VehicleWeb;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -110,6 +111,12 @@ public class VehicleDao {
     
     }
     
+    
+    public static void listarVehicle(int id_editar){
+    includeDriver();
+    VehicleDao.mostrarVehicles();
+    
+    }
 }
     
     
