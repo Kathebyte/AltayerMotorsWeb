@@ -104,9 +104,8 @@ public class VehicleDao {
             
           
         } catch (SQLException ex) {
-            System.out.println("ex");
-            System.out.println("Error delete list Vehicles");
             ex.printStackTrace();
+         
         }
     
     }
