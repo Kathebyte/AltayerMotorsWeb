@@ -1,4 +1,4 @@
-package Servlet;
+package Servlet.Vehicle;
 
 import PersistenciaDatos.VehicleDao;
 import backend.VehicleWeb;

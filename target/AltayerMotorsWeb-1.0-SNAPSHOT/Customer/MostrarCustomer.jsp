@@ -18,6 +18,11 @@
     <body>
         <div class="container">
             <h1 class="display-3">All Customers</h1>
+            <% if (request.getAttribute("message") != null) {%>
+            <div class="alert alert-success" role="alert">
+                <%= request.getAttribute("message")%>
+            </div>
+            <% } %>
             <table class="table table-hover table-md table-responsive-sm">
                 <thead>
                     <tr>
@@ -41,11 +46,22 @@
                         <th scope="row"> <%=customer.getAddress()%></th>
                         <th scope="row"> <%=customer.getPhoneNumber()%></th>
                         <th scope="row"> <%=customer.getEmail()%></th>
+                        
+                        <td>
+                            <form action="Delete" method="POST">
+                                <input type="hidden" name="idCustomer" value="<%=customer.getId()%>">
+                                <button class="btn btn-danger" type="submit">Delete</button>
+
+                            </form>
+                        </td>
                     </tr>
                     <% }%>
 
                 </tbody>
             </table>
+                    <div class="btn-group">
+                        <a href=CreateCustomer.jsp class="btn btn-primary" aria-current="page">Create Customer</a>
+            </div>
             <div class="btn-group">
                 <a href="http://localhost:8080/AltayerMotorsWeb" class="btn btn-primary" aria-current="page">Menu</a>
             </div>

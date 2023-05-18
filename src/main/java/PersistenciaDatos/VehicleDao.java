@@ -89,9 +89,30 @@ public class VehicleDao {
         return ListVehicles;
 
     }
-
+    
+    public static void deleteVehicle(int carId){
+    
+    includeDriver();
+        
+        Conexion db_connect = new Conexion();
+        String query="delete from vehicle where carId = ?" ;
+        
+        try (Connection conexion = db_connect.getConnection()) {
+            PreparedStatement ps = conexion.prepareStatement(query);
+            ps.setInt(1,carId);
+            ps.executeUpdate();
+            
+          
+        } catch (SQLException ex) {
+            System.out.println("ex");
+            System.out.println("Error delete list Vehicles");
+            ex.printStackTrace();
+        }
+    
+    }
     
 }
+    
     
 
 

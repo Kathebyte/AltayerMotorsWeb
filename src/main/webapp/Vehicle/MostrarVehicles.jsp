@@ -18,6 +18,12 @@
     <body>
         <div class="container">
             <h1 class="display-3">All vehicles</h1>
+            <% if (request.getAttribute("message") != null) {%>
+            <div class="alert alert-success" role="alert">
+            <%= request.getAttribute("message")%>
+            </div>
+           <% } %>
+           
             <table class="table table-hover table-md table-responsive-sm">
                 <thead>
                     <tr>
@@ -51,11 +57,22 @@
                         <td> <%=vehiculo.getWarrantyTime()%></td>
                         <td> <%=vehiculo.getAccidentHistory()%></td>
                         <td> <%=vehiculo.getTypeCar()%></td>
+                        <td>
+                            <form action="Delete" method="POST">
+                                <input type="hidden" name="carId" value="<%=vehiculo.getCarId()%>">
+                                <button class="btn btn-danger" type="submit">Delete</button>
+
+                            </form>
+                        </td>
                     </tr>
                     <% }%>
 
                 </tbody>
             </table>
+            <div class="btn-group">
+                        <a href=CreateVehicle.jsp class="btn btn-primary" aria-current="page">Create Vehicle</a>
+            </div>        
+                    
             <div class="btn-group">
                 <a href="http://localhost:8080/AltayerMotorsWeb" class="btn btn-primary" aria-current="page">Menu</a>
             </div>

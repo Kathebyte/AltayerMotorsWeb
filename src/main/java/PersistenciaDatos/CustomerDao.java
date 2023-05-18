@@ -85,5 +85,23 @@ public class CustomerDao {
             System.out.println(e);
         }
     }
+    
+    public static void deleteCustomer(int idCustomer){
+        includeDriver();
+        
+        Conexion db_connect = new Conexion();
+        String query="delete from customer where idCustomer = ?" ;
+        
+        try (Connection conexion = db_connect.getConnection()) {
+            PreparedStatement ps = conexion.prepareStatement(query);
+            ps.setInt(1,idCustomer);
+            ps.executeUpdate();
+            
+          
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            
+        }
+    }
 
 }
