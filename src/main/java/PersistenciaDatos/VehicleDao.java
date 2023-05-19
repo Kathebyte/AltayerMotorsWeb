@@ -1,7 +1,6 @@
 package PersistenciaDatos;
 
 
-import backend.EmployeeWeb;
 import backend.VehicleWeb;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class VehicleDao {
 
@@ -40,7 +40,7 @@ public class VehicleDao {
                 ps.setString(7, vehicle.getWarrantyTime());
                 ps.setString(8, vehicle.getAccidentHistory());
                 ps.setString(9, vehicle.getTypeCar());
-                
+
                 ps.executeUpdate();
                 db_connect.closeConection();
 
@@ -75,7 +75,6 @@ public class VehicleDao {
                 String warrantyTime = rs.getString(8);
                 String accidentHistory = rs.getString(9);
                 String type_car = rs.getString(10);
-                
 
                 VehicleWeb vehicleNew = new VehicleWeb(carId, make, brand, year, miliage, color, prices, type_car, warrantyTime, accidentHistory);
                 ListVehicles.add(vehicleNew);
@@ -90,35 +89,88 @@ public class VehicleDao {
         return ListVehicles;
 
     }
-    
-    public static void deleteVehicle(int carId){
-    
-    includeDriver();
-        
+
+    public static void deleteVehicle(int carId) {
+
+        includeDriver();
+
         Conexion db_connect = new Conexion();
-        String query="delete from vehicle where carId = ?" ;
-        
+        String query = "delete from vehicle where carId = ?";
+
         try (Connection conexion = db_connect.getConnection()) {
             PreparedStatement ps = conexion.prepareStatement(query);
-            ps.setInt(1,carId);
+            ps.setInt(1, carId);
             ps.executeUpdate();
-            
-          
+
         } catch (SQLException ex) {
             ex.printStackTrace();
-         
+
         }
-    
+
     }
-    
-    
-    public static void listarVehicle(int id_editar){
-    includeDriver();
-    VehicleDao.mostrarVehicles();
-    
+
+    public static void updateVehicle(VehicleWeb vehicle) {
+        includeDriver();
+
+        Conexion db_connect = new Conexion();
+        String query = "update vehicle set make=?,brand=?, year=?,color=?,prices=?,miliage=?,warrantyTime=?,accidentHistory=?,typeCar=? where carId=?";
+
+        try (Connection conexion = db_connect.getConnection()) {
+            PreparedStatement ps = conexion.prepareStatement(query);
+            ps.setString(1, vehicle.getMake());
+            ps.setString(2, vehicle.getBrand());
+            ps.setString(3, vehicle.getYear());
+            ps.setString(4, vehicle.getColor());
+            ps.setInt(5, vehicle.getPrices());
+            ps.setString(6, vehicle.getMiliage());
+            ps.setString(7, vehicle.getWarrantyTime());
+            ps.setString(8, vehicle.getAccidentHistory());
+            ps.setString(9, vehicle.getTypeCar());
+            ps.setInt(10, vehicle.getCarId());
+
+            ps.executeUpdate();
+            db_connect.closeConection();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
+        }
     }
+
+    public static VehicleWeb getVehicle(int vehicleId) {
+        
+        includeDriver();
+        VehicleWeb vehicle = new VehicleWeb();
+        Conexion db_connect = new Conexion();
+        String query = "select * from vehicle where carId=?";
+
+        try (Connection conexion = db_connect.getConnection()) {
+            PreparedStatement ps = conexion.prepareStatement(query);
+            ps.setInt(1, vehicleId);
+            
+            ResultSet rs = ps.executeQuery();
+
+                while (rs.next()) {
+                    String make = rs.getString(2);
+                    String brand = rs.getString(3);
+                    String year = rs.getString(4);
+                    String color = rs.getString(5);
+                    int prices = rs.getInt(6);
+                    String miliage = rs.getString(7);
+                    String warrantyTime = rs.getString(8);
+                    String accidentHistory = rs.getString(9);
+                    String type_car = rs.getString(10);    
+
+                    vehicle = new VehicleWeb(vehicleId, make, brand, year, miliage, color, prices, type_car, warrantyTime, accidentHistory);
+                }
+                
+                
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return vehicle;
+            
+    }
+
 }
-    
-    
-
-

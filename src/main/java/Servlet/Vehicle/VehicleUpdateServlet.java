@@ -30,26 +30,33 @@ public class VehicleUpdateServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        int id_editar = Integer.parseInt(request.getParameter("carIdUpdate"));
-
-        VehicleWeb vehicle= VehicleDao.listarVehicle(id_editar);
-
-        HttpSession session = request.getSession();
-        session.setAttribute("vehicle", vehicle);
-
-        response.sendRedirect("UpdateVehicle.jsp");
+        int idVehicle = Integer.parseInt(request.getParameter("carIdUpdate"));
+        System.out.println("id vehicle enviado: " +idVehicle);
+        String action = "Update";
+        
+        VehicleWeb updateVehicle = VehicleDao.getVehicle(idVehicle);
+        
+        System.out.println("**********************");
+        System.out.println("CarId: " +updateVehicle.getCarId());
+        System.out.println("Make: " +updateVehicle.getMake());
+       
+        HttpSession session = request.getSession(false);
+        session.setAttribute("vehicle", updateVehicle);
+        session.setAttribute("action", action);
+        
+        response.sendRedirect("VehicleForm.jsp");
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
     }
 
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

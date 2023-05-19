@@ -1,11 +1,15 @@
-/Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/Servlet/VehicleCreateServlet.java
-/Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/Servlet/VehicleListServlet.java
+/Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/Servlet/Vehicle/VehicleUpdateServlet.java
+/Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/Servlet/Customer/CustomerDeleteServlet.java
+/Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/Servlet/Vehicle/VehicleListServlet.java
+/Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/Servlet/Vehicle/VehicleDeleteServlet.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/backend/EmployeeWeb.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/backend/UserWeb.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/Servlet/Employee/EmployeeDeleteServlet.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/backend/VehicleWeb.java
-/Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/Servlet/CustomerCreateServlet.java
+/Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/Servlet/Vehicle/VehicleCreateServlet.java
+/Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/Servlet/Customer/CustomerListServlet.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/PersistenciaDatos/CustomerDao.java
+/Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/Servlet/Customer/CustomerCreateServlet.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/PersistenciaDatos/db_connect.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/PersistenciaDatos/Conexion.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/backend/CustomerWeb.java
@@ -15,4 +19,3 @@
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/PersistenciaDatos/EmployeeDao.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/backend/Sales.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/PersistenciaDatos/VehicleDao.java
-/Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/Servlet/CustomerListServlet.java

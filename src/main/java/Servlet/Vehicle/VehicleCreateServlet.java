@@ -15,10 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author kathemacbook
- */
+
 @WebServlet(name = "VehicleCreateServlet", urlPatterns = {"/Vehicle/Create"})
 public class VehicleCreateServlet extends HttpServlet {
 
@@ -30,9 +27,15 @@ public class VehicleCreateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        response.sendRedirect("CreateVehicle.jsp");
         
+        String action = "Create";
+       
+        HttpSession session = request.getSession();
+        
+        session.setAttribute("action", action);
+        
+        response.sendRedirect("VehicleForm.jsp");
+
     }
 
     
@@ -66,7 +69,6 @@ public class VehicleCreateServlet extends HttpServlet {
         newVehicle.setTypeCar(typeCar);
         newVehicle.setWarrantyTime(warrantyTime);
         newVehicle.setAccidentHistory(accidentHistory);
-        
         VehicleDao.createVehicledDB(newVehicle);
         
         HttpSession misesion = request.getSession();
