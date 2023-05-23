@@ -103,5 +103,36 @@ public class CustomerDao {
             
         }
     }
+    
+    public static CustomerWeb getCustomer (int idCustomer) {
+        
+        includeDriver();
+        CustomerWeb customer = new CustomerWeb();
+        Conexion db_connect = new Conexion();
+        String query = "select * from customer where idCustomer=?";
 
+        try (Connection conexion = db_connect.getConnection()) {
+            PreparedStatement ps = conexion.prepareStatement(query);
+            ps.setInt(1, idCustomer);
+            
+            ResultSet rs = ps.executeQuery();
+
+                while (rs.next()) {
+                    
+                    String name= rs.getString(2);
+                    String phoneNumber =rs.getString(3);
+                    String address =rs.getString(4);
+                    String email=rs.getString(5);
+
+                    customer= new CustomerWeb(idCustomer, name, phoneNumber, address, email);
+                }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return customer;
+            
+    }
+
+   
 }

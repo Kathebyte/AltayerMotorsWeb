@@ -9,6 +9,13 @@ public class CustomerWeb extends UserWeb{
 
     
     private int id;
+    
+        public CustomerWeb(){
+        super("","","","");
+  
+    }
+        
+        
 
     public CustomerWeb(int id, String name, String phoneNumber, String address, String email) {
         super(name, phoneNumber, address, email);
@@ -19,7 +26,7 @@ public class CustomerWeb extends UserWeb{
         super(name, phoneNumber, address, email);
     }
 
-   
+    
     
 
     public int getId() {

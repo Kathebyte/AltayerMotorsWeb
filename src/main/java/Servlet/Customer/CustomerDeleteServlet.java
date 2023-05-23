@@ -45,7 +45,7 @@ public class CustomerDeleteServlet extends HttpServlet {
         request.setAttribute("listaCustomer", listaCustomers);
         
         request.setAttribute("message", "Customer deleted successfully");
-        request.getRequestDispatcher("MostrarCustomer.jsp").forward(request, response);
+        request.getRequestDispatcher("CustomerForm.jsp").forward(request, response);
  
         
     }

@@ -16,6 +16,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
+        <% 
+            String idCustomer= "";
+            String name="";
+            String phoneNumber= "";
+            String address= "";
+            String email= "";
+            
+            CustomerWeb customerUpdate;
+            String action = (String) session.getAttribute("action");
+            if (action == "Update") {
+            customerUpdate = (CustomerWeb)request.getSession().getAttribute("customer");
+            
+            }
+
+            %>
         <div class="container">
             <h1 class="display-3">All Customers</h1>
             <% if (request.getAttribute("message") != null) {%>
@@ -46,12 +61,17 @@
                         <th scope="row"> <%=customer.getAddress()%></th>
                         <th scope="row"> <%=customer.getPhoneNumber()%></th>
                         <th scope="row"> <%=customer.getEmail()%></th>
-                        
+
                         <td>
                             <form action="Delete" method="POST">
                                 <input type="hidden" name="idCustomer" value="<%=customer.getId()%>">
                                 <button class="btn btn-danger" type="submit">Delete</button>
-
+                            </form>
+                        </td>
+                        <td>
+                            <form action="Update" method="GET">
+                                <input type="hidden" name="idCustomer" value="<%=customer.getId()%>">
+                                <button class="btn btn-primary" type="submit">Update</button>
                             </form>
                         </td>
                     </tr>
@@ -59,8 +79,8 @@
 
                 </tbody>
             </table>
-                    <div class="btn-group">
-                        <a href=CreateCustomer.jsp class="btn btn-primary" aria-current="page">Create Customer</a>
+            <div class="btn-group">
+                <a href=CreateCustomer.jsp class="btn btn-primary" aria-current="page">Create Customer</a>
             </div>
             <div class="btn-group">
                 <a href="http://localhost:8080/AltayerMotorsWeb" class="btn btn-primary" aria-current="page">Menu</a>
