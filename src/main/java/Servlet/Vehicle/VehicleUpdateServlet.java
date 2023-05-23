@@ -52,6 +52,38 @@ public class VehicleUpdateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        String make = request.getParameter("make");
+        String brand= request.getParameter("brand");
+        String year = request.getParameter("year");
+        String miliage= request.getParameter("miliage");
+        String color= request.getParameter("color");
+        String prices= request.getParameter("prices");
+        String typeCar =request.getParameter("typeCar");
+        String warrantyTime=request.getParameter("warrantyTime");
+        String accidentHistory=request.getParameter("accidentHistory");
+        
+        VehicleWeb newVehicle= (VehicleWeb) request.getSession().getAttribute("vehicle");
+        
+        int pricesV =0;
+        if ( prices != null){
+            pricesV = Integer.parseInt(prices);
+        }
+        
+        newVehicle.setMake(make);
+        newVehicle.setBrand(brand);
+        newVehicle.setYear(year);
+        newVehicle.setMiliage(miliage);
+        newVehicle.setColor(color);
+        newVehicle.setPrices(pricesV);
+        newVehicle.setTypeCar(typeCar);
+        newVehicle.setWarrantyTime(warrantyTime);
+        newVehicle.setAccidentHistory(accidentHistory);
+        
+        VehicleDao.updateVehicle(newVehicle);
+        System.out.println("Servlet de actualización ejecutado");
+        response.sendRedirect("List");
+        
+        
     }
 
     @Override

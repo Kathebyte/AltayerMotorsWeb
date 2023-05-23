@@ -72,9 +72,11 @@ public class VehicleCreateServlet extends HttpServlet {
         VehicleDao.createVehicledDB(newVehicle);
         
         HttpSession misesion = request.getSession();
+        
         misesion.setAttribute("vehicle", newVehicle);
 
         response.sendRedirect("List");
+        System.out.println("Servlet de creación ejecutado");
       
     }
 
