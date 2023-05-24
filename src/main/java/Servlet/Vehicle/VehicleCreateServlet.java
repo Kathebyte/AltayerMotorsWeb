@@ -69,6 +69,7 @@ public class VehicleCreateServlet extends HttpServlet {
         newVehicle.setTypeCar(typeCar);
         newVehicle.setWarrantyTime(warrantyTime);
         newVehicle.setAccidentHistory(accidentHistory);
+       
         VehicleDao.createVehicledDB(newVehicle);
         
         HttpSession misesion = request.getSession();
@@ -77,7 +78,7 @@ public class VehicleCreateServlet extends HttpServlet {
 
         response.sendRedirect("List");
         System.out.println("Servlet de creación ejecutado");
-      
+       
     }
 
     /**

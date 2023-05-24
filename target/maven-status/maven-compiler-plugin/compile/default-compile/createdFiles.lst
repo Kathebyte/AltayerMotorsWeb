@@ -10,6 +10,7 @@ Servlet/Vehicle/VehicleUpdateServlet.class
 backend/Sales.class
 Servlet/Employee/EmployeeListServlet.class
 PersistenciaDatos/Conexion.class
+Servlet/Customer/CustomerUpdateServlet.class
 Servlet/Customer/CustomerCreateServlet.class
 PersistenciaDatos/EmployeeDao.class
 Servlet/Employee/EmployeeCreateServlet.class

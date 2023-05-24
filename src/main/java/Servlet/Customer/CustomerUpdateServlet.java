@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 /**
  *
  * @author kathemacbook
@@ -27,35 +28,54 @@ public class CustomerUpdateServlet extends HttpServlet {
       
     }
     
-
  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        int idCustomer = Integer.parseInt(request.getParameter("idCustomer"));
         
-        CustomerWeb customerUpdate= CustomerDao.getCustomer(idCustomer);
+        int idCustomer = Integer.parseInt(request.getParameter("idCustomer"));
+        System.out.println("id Enviado customer: " +idCustomer);
         String action = "Update";
+        
+        CustomerWeb updateCustomer = CustomerDao.getCustomer(idCustomer);
+        
+        System.out.println("**********************");
+        System.out.println("id Customer: " +updateCustomer.getId());
+        System.out.println("name: " +updateCustomer.getName());
+        System.out.println("Estoy obteniendo el id para hacer la actualizacion");
+       
         
         HttpSession session = request.getSession(false);
         
-        session.setAttribute("customer", customerUpdate);
+        session.setAttribute("customer", updateCustomer);
         session.setAttribute("action", action);
         
         response.sendRedirect("CustomerForm.jsp");
 
     }
         
-        
-        
-        
-       
-    }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        String name= request.getParameter("name");
+        String phoneNumber= request.getParameter("phoneNumber");
+        String address = request.getParameter("address");
+        String email= request.getParameter("email");
+        
+        CustomerWeb customer1= (CustomerWeb)request.getSession().getAttribute("customer");
+        
+        customer1.setName(name);
+        customer1.setPhoneNumber(phoneNumber);
+        customer1.setAddress(address);
+        customer1.setEmail(email);
+        
+        CustomerDao.updateCustomer(customer1);
+        System.out.println("Servlet de actualización ejecutado" + customer1.getName());
+        response.sendRedirect("List");
         
     }
 

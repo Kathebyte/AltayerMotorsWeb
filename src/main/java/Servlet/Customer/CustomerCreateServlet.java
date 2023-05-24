@@ -32,9 +32,14 @@ public class CustomerCreateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
         
-        response.sendRedirect("CreateCustomer.jsp");
+        String action = "Create";
+       
+        HttpSession session = request.getSession();
+        
+        session.setAttribute("action", action);
+        
+        response.sendRedirect("CustomerForm.jsp");
     }
 
    
@@ -49,22 +54,24 @@ public class CustomerCreateServlet extends HttpServlet {
         String email= request.getParameter("email");
         
         
-        CustomerWeb customerNew = new CustomerWeb(name, phoneNumber, address, email);
+        CustomerWeb newCustomer = new CustomerWeb(name, phoneNumber, address, email);
         
-        customerNew.setName(name);
-        customerNew.setPhoneNumber(phoneNumber);
-        customerNew.setAddress(address);
-        customerNew.setEmail(email);
+        newCustomer.setName(name);
+        newCustomer.setPhoneNumber(phoneNumber);
+        newCustomer.setAddress(address);
+        newCustomer.setEmail(email);
         
-        CustomerDao.createCustomer(customerNew);
+        CustomerDao.createCustomer(newCustomer);
+        System.out.println("Customer creado nombre: "+name);
+        
         
         HttpSession misesion = request.getSession();
-        misesion.setAttribute("customer", customerNew);
+        
+        misesion.setAttribute("customer", newCustomer);
 
         response.sendRedirect("List");
-        
-                
-                }
+        System.out.println("Servlet de creación ejecutado");
+}
 
     @Override
     public String getServletInfo() {

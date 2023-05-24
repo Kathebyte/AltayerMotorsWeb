@@ -36,9 +36,10 @@ public class CustomerListServlet extends HttpServlet {
         List<CustomerWeb>listaCustomers = new ArrayList<>();
         
         listaCustomers = CustomerDao.mostrarCustomers();
+        
         HttpSession misesion = request.getSession();
         misesion.setAttribute("listaCustomers", listaCustomers);
-        response.sendRedirect("CustomerForm.jsp");
+        response.sendRedirect("MostrarCustomer.jsp");
     
     }
         
@@ -46,7 +47,26 @@ public class CustomerListServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        String name= request.getParameter("name");
+        String phoneNumber= request.getParameter("phoneNumber");
+        String address = request.getParameter("address");
+        String email= request.getParameter("email");
+        
+        CustomerWeb customer1 = new CustomerWeb();
+        
+        customer1.setName(name);
+        customer1.setPhoneNumber(phoneNumber);
+        customer1.setAddress(address);
+        customer1.setEmail(email);
+        
+        response.setContentType("text/plain");
+        response.getWriter().println("Name:" + (name));
+        response.getWriter().println("Phone Numbre:" + (phoneNumber));
+        response.getWriter().println("Address:" + (address));
+        response.getWriter().println("Email:" + (email));
+        
+        
     }
 
     

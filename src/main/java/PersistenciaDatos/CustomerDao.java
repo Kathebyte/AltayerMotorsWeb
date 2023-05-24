@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class CustomerDao {
 
     private static void includeDriver() {
@@ -22,7 +21,6 @@ public class CustomerDao {
             System.out.println(e);
         }
     }
-
 
     public static List<CustomerWeb> mostrarCustomers() {
         includeDriver();
@@ -58,7 +56,7 @@ public class CustomerDao {
         return listCustomer;
 
     }
-        
+
     public static void createCustomer(CustomerWeb customer) {
         includeDriver();
 
@@ -68,7 +66,7 @@ public class CustomerDao {
             PreparedStatement ps = null;
 
             try {
-                String query = "insert into customer (name, address, phoneNumber, email)  values (?,?,?,?)";
+                String query = "insert into customer (name, phoneNumber, address, email) values  (?,?,?,?)";
                 ps = conexion.prepareStatement(query);
                 ps.setString(1, customer.getName());
                 ps.setString(2, customer.getAddress());
@@ -85,27 +83,26 @@ public class CustomerDao {
             System.out.println(e);
         }
     }
-    
-    public static void deleteCustomer(int idCustomer){
+
+    public static void deleteCustomer(int idCustomer) {
         includeDriver();
-        
+
         Conexion db_connect = new Conexion();
-        String query="delete from customer where idCustomer = ?" ;
-        
+        String query = "delete from customer where idCustomer = ?";
+
         try (Connection conexion = db_connect.getConnection()) {
             PreparedStatement ps = conexion.prepareStatement(query);
-            ps.setInt(1,idCustomer);
+            ps.setInt(1, idCustomer);
             ps.executeUpdate();
-            
-          
+
         } catch (SQLException ex) {
             ex.printStackTrace();
-            
+
         }
     }
-    
-    public static CustomerWeb getCustomer (int idCustomer) {
-        
+
+    public static CustomerWeb getCustomer(int idCustomer) {
+
         includeDriver();
         CustomerWeb customer = new CustomerWeb();
         Conexion db_connect = new Conexion();
@@ -114,25 +111,47 @@ public class CustomerDao {
         try (Connection conexion = db_connect.getConnection()) {
             PreparedStatement ps = conexion.prepareStatement(query);
             ps.setInt(1, idCustomer);
-            
+
             ResultSet rs = ps.executeQuery();
 
-                while (rs.next()) {
-                    
-                    String name= rs.getString(2);
-                    String phoneNumber =rs.getString(3);
-                    String address =rs.getString(4);
-                    String email=rs.getString(5);
+            while (rs.next()) {
 
-                    customer= new CustomerWeb(idCustomer, name, phoneNumber, address, email);
-                }
+                String name = rs.getString(2);
+                String phoneNumber = rs.getString(3);
+                String address = rs.getString(4);
+                String email = rs.getString(5);
+
+                customer = new CustomerWeb(idCustomer, name, phoneNumber, address, email);
+            }
 
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return customer;
-            
+
     }
 
-   
+    public static void updateCustomer(CustomerWeb customer) {
+
+        includeDriver();
+
+        Conexion db_connect = new Conexion();
+        String query = "update customer set name=?, address=?, phoneNumber=?, email=?";
+
+        try (Connection conexion = db_connect.getConnection()) {
+            PreparedStatement ps = conexion.prepareStatement(query);
+            ps.setString(1, customer.getName());
+            ps.setString(2, customer.getAddress());
+            ps.setString(3, customer.getPhoneNumber());
+            ps.setString(4, customer.getEmail());
+
+            ps.executeUpdate();
+            db_connect.closeConection();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
 }

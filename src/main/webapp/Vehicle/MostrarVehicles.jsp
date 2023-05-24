@@ -75,9 +75,12 @@
 
                 </tbody>
             </table>
-            <div class="btn-group">
-                <a href=CreateVehicle.jsp class="btn btn-primary" aria-current="page">Create Vehicle</a>
-            </div>        
+                    <div class="btn-group">
+<!--                    <form action="Create" method="POST">
+                <a href=VehicleForm.jsp class="btn btn-primary" aria-current="page">Create Vehicle</a>
+                    </form>
+                    </div>  -->
+       
 
             <div class="btn-group">
                 <a href="http://localhost:8080/AltayerMotorsWeb" class="btn btn-primary" aria-current="page">Menu</a>

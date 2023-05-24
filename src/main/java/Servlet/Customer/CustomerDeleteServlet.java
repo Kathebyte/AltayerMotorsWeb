@@ -29,7 +29,7 @@ public class CustomerDeleteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       
     }
 
     
@@ -45,7 +45,7 @@ public class CustomerDeleteServlet extends HttpServlet {
         request.setAttribute("listaCustomer", listaCustomers);
         
         request.setAttribute("message", "Customer deleted successfully");
-        request.getRequestDispatcher("CustomerForm.jsp").forward(request, response);
+        request.getRequestDispatcher("MostrarCustomer.jsp").forward(request, response);
  
         
     }

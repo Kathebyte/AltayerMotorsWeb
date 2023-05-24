@@ -1,11 +1,11 @@
 <%-- 
-    Document   : MostrarVehicles
-    Created on : 22 Apr 2023, 5:12:59 PM
+    Document   : MostrarCutosmer
+    Created on : 24 Apr 2023, 3:56:45 PM
     Author     : kathemacbook
 --%>
 
-<%@page import="backend.VehicleWeb"%>
 <%@page import="java.util.List"%>
+<%@page import="backend.CustomerWeb"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,57 +16,47 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
+       
         <div class="container">
-            <h1 class="display-3">All vehicles</h1>
+            <h1 class="display-3">All Customers</h1>
             <% if (request.getAttribute("message") != null) {%>
             <div class="alert alert-success" role="alert">
                 <%= request.getAttribute("message")%>
             </div>
             <% } %>
-
             <table class="table table-hover table-md table-responsive-sm">
                 <thead>
                     <tr>
-                        <th scope="col">Car Id #</th>
-                        <th scope="col">Make</th>
-                        <th scope="col">Brand</th>
-                        <th scope="col">Year</th>
-                        <th scope="col">Color</th>
-                        <th scope="col">Prices</th>
-                        <th scope="col">Miliage</th>
-                        <th scope="col">Warranty Time</th>
-                        <th scope="col">Accident History</th>
-                        <th scope="col">Type Car</th>
+                        <th scope="col">Id #</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone number</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Email</th>
 
                     </tr>
                 </thead>
                 <tbody>
 
                     <%
-                        List<VehicleWeb> listaVehicles = (List) request.getSession().getAttribute("listaVehicles");
-                        for (VehicleWeb vehiculo : listaVehicles) {
+                        List<CustomerWeb> listaCustomers = (List) request.getSession().getAttribute("listaCustomers");
+                        for (CustomerWeb customer : listaCustomers) {
                     %>
                     <tr>
-                        <th scope="row"> <%=vehiculo.getCarId()%></th>
-                        <td> <%=vehiculo.getMake()%> </td>
-                        <td> <%=vehiculo.getBrand()%> </td>
-                        <td> <%=vehiculo.getYear()%></td>
-                        <td> <%=vehiculo.getColor()%></td>
-                        <td> <%=vehiculo.getPrices()%></td>
-                        <td> <%=vehiculo.getMiliage()%></td>
-                        <td> <%=vehiculo.getWarrantyTime()%></td>
-                        <td> <%=vehiculo.getAccidentHistory()%></td>
-                        <td> <%=vehiculo.getTypeCar()%></td>
+                        <th scope="row"> <%=customer.getId()%></th>
+                        <th scope="row"> <%=customer.getName()%></th>
+                        <th scope="row"> <%=customer.getAddress()%></th>
+                        <th scope="row"> <%=customer.getPhoneNumber()%></th>
+                        <th scope="row"> <%=customer.getEmail()%></th>
+
                         <td>
                             <form action="Delete" method="POST">
-                                <input type="hidden" name="carId" value="<%=vehiculo.getCarId()%>">
+                                <input type="hidden" name="idCustomer" value="<%=customer.getId()%>">
                                 <button class="btn btn-danger" type="submit">Delete</button>
                             </form>
-
                         </td>
                         <td>
                             <form action="Update" method="GET">
-                                <input type="hidden" name="carIdUpdate" value="<%=vehiculo.getCarId()%>">
+                                <input type="hidden" name="idCustomer" value="<%=customer.getId()%>">
                                 <button class="btn btn-primary" type="submit">Update</button>
                             </form>
                         </td>
@@ -75,13 +65,9 @@
 
                 </tbody>
             </table>
-                    <div class="btn-group">
-<!--                    <form action="Create" method="POST">
-                <a href=VehicleForm.jsp class="btn btn-primary" aria-current="page">Create Vehicle</a>
-                    </form>
-                    </div>  -->
-       
-
+            <div class="btn-group">
+                <a href="http://localhost:8080/AltayerMotorsWeb/Customer/CustomerForm.jsp" class="btn btn-primary" aria-current="page">Create Customer</a>
+            </div>
             <div class="btn-group">
                 <a href="http://localhost:8080/AltayerMotorsWeb" class="btn btn-primary" aria-current="page">Menu</a>
             </div>
