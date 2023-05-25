@@ -136,7 +136,7 @@ public class CustomerDao {
         includeDriver();
 
         Conexion db_connect = new Conexion();
-        String query = "update customer set name=?, address=?, phoneNumber=?, email=?";
+        String query = "update customer set name=?, address=?, phoneNumber=?, email=? where idCustomer=?";
 
         try (Connection conexion = db_connect.getConnection()) {
             PreparedStatement ps = conexion.prepareStatement(query);
@@ -144,6 +144,7 @@ public class CustomerDao {
             ps.setString(2, customer.getAddress());
             ps.setString(3, customer.getPhoneNumber());
             ps.setString(4, customer.getEmail());
+            ps.setInt(5, customer.getId());
 
             ps.executeUpdate();
             db_connect.closeConection();
