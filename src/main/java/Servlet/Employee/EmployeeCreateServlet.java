@@ -30,7 +30,12 @@ public class EmployeeCreateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("CreateEmployee.jsp");
+        
+        String action="Create";
+        HttpSession session= request.getSession();
+        
+        session.setAttribute("action", action);
+        response.sendRedirect("EmployeeForm.jsp");
   
   
     }

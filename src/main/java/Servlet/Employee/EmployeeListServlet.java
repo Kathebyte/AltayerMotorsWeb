@@ -49,7 +49,28 @@ public class EmployeeListServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        String name= request.getParameter("name");
+        String phoneNumber =request.getParameter("phoneNumber");
+        String address=request.getParameter("address");
+        String email=request.getParameter("email");
+        String salary=request.getParameter("salary");
+        String jobPosition=request.getParameter("jobPosition");
+        String user=request.getParameter("user");
+        String state=request.getParameter("state");
+        
+        EmployeeWeb employee1= new EmployeeWeb();
+        
+        
+        employee1.setName(name);
+        employee1.setPhoneNumber(phoneNumber);
+        employee1.setAddress(address);
+        employee1.setEmail(email);
+        employee1.setSalary(salary);
+        employee1.setJobPosition(jobPosition);
+        employee1.setUser(user);
+        employee1.setState(state);
+
     }
 
     

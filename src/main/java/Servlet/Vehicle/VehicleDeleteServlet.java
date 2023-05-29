@@ -32,17 +32,13 @@ public class VehicleDeleteServlet extends HttpServlet {
         
         int carId= Integer.parseInt(request.getParameter("carId"));
         VehicleDao.deleteVehicle(carId);
-        
-    
-        
+  
         List<VehicleWeb> listaVehicles = VehicleDao.mostrarVehicles();
         request.setAttribute("listaVehicles", listaVehicles);
         
-        
         request.setAttribute("message", "Vehicle deleted successfully");
         request.getRequestDispatcher("MostrarVehicles.jsp").forward(request, response);
-        
-        
+
     }
 
    

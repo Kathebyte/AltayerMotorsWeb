@@ -5,21 +5,25 @@
 package backend;
 
 
-
 public class EmployeeWeb extends UserWeb {
     
     String salary;
     String jobPosition;
-    int idEmploployee;
+    int idEmployee;
     String user;
     String state; 
 
+    public EmployeeWeb() {
+        super("", "", "", "");
+    }
+
+    
   
-    public EmployeeWeb(String name, String phoneNumber, String address, String email,String salary, String jobPosition, int idEmploployee, String user, String state) {
+    public EmployeeWeb(String name, String phoneNumber, String address, String email,String salary, String jobPosition, int idEmployee, String user, String state) {
         super(name, phoneNumber, address, email);
         this.salary = salary;
         this.jobPosition = jobPosition;
-        this.idEmploployee = idEmploployee;
+        this.idEmployee = idEmployee;
         this.user = user;
         this.state = state;
     }
@@ -30,35 +34,6 @@ public class EmployeeWeb extends UserWeb {
         this.jobPosition = jobPosition;
         this.user = user;
         this.state = state;
-    }
-
- 
- 
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
- 
-   
-    public int getIdEmploployee() {
-        return idEmploployee;
-    }
-
-    public void setIdEmploployee(int idEmploployee) {
-        this.idEmploployee = idEmploployee;
     }
 
     public String getSalary() {
@@ -77,9 +52,31 @@ public class EmployeeWeb extends UserWeb {
         this.jobPosition = jobPosition;
     }
 
-  
-    
-    
-  
+    public int getIdEmployee() {
+        return idEmployee;
+    }
+
+    public void setIdEmployee(int idEmployee) {
+        this.idEmployee = idEmployee;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+ 
+ 
 }
  

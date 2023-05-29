@@ -65,9 +65,9 @@
 
                 </tbody>
             </table>
-            <div class="btn-group">
+<!--            <div class="btn-group">
                 <a href="http://localhost:8080/AltayerMotorsWeb/Customer/CustomerForm.jsp" class="btn btn-primary" aria-current="page">Create Customer</a>
-            </div>
+            </div>-->
             <div class="btn-group">
                 <a href="http://localhost:8080/AltayerMotorsWeb" class="btn btn-primary" aria-current="page">Menu</a>
             </div>

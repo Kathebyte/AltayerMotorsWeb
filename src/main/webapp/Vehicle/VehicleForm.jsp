@@ -88,13 +88,14 @@
                     <label for="typeCar" class="col-3 col-form-label">Type Car</label>
                     <div class="col-9">
                         <select class="form-control" id="typeCar" name="typeCar">
-                            <option></option>
+                        <option>
                             <option <%= (typeCar.equals("Coupe")) ? "selected" : ""%>>Coupe</option>
                             <option <%= (typeCar.equals("Sports Car")) ? "selected" : ""%>>Sports Car</option>
                             <option <%= (typeCar.equals("Pickup Truck")) ? "selected" : ""%>>Pickup Truck</option>
                             <option <%= (typeCar.equals("SUV")) ? "selected" : ""%>>SUV</option>
                             <option <%= (typeCar.equals("Luxury")) ? "selected" : ""%>>Luxury</option>
                             <option <%= (typeCar.equals("Convertible")) ? "selected" : ""%>>Convertible</option>
+                        </option>
                         </select>
 
                     </div>

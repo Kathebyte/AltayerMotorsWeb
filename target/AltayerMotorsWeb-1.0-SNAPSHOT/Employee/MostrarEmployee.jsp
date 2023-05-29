@@ -19,11 +19,11 @@
     <body>
         <div class="container">
             <h1 class="display-3">All Employees</h1>
-            <% if (request.getAttribute("message") != null) {%>
+<% if (request.getAttribute("message") != null) {%>
             <div class="alert alert-success" role="alert">
-                <%= request.getAttribute("message")%>
+<%= request.getAttribute("message")%>
             </div>
-            <% } %>
+<% } %>
             <table class="table table-striped table-hover ">
                 <thead>
                     <tr>
@@ -42,14 +42,14 @@
                 </thead>
 
                 <tbody>
-                    <%
-                        List<EmployeeWeb> listaEmployee = (List) request.getSession().getAttribute("listaEmployee");
-                        for (EmployeeWeb employee : listaEmployee) {
+<%
+    List<EmployeeWeb> listaEmployee = (List) request.getSession().getAttribute("listaEmployee");
+    for (EmployeeWeb employee : listaEmployee) {
 
-                    %>
+%>
                     <tr>
 
-                        <th scope="row"> <%=employee.getIdEmploployee()%></th>
+                        <th scope="row"> <%=employee.getIdEmployee()%></th>
                         <th scope="row"> <%=employee.getUser()%></th>
                         <th scope="row"> <%=employee.getName()%></th>
                         <th scope="row"> <%=employee.getPhoneNumber()%></th>
@@ -60,20 +60,24 @@
                         <th scope="row"> <%=employee.getSalary()%></th>
                         <td>
                             <form action="Delete" method="POST">
-                                <input type="hidden" name="idUser" value="<%=employee.getIdEmploployee()%>">
+                                <input type="hidden" name="idUser" value="<%=employee.getIdEmployee()%>">
                                 <button class="btn btn-danger" type="submit">Delete</button>
+                            </form>
 
+                        </td>
+                        <td>
+                            <form action="Update" method="GET">
+                                <input type="hidden" name="idEmployee" value="<%=employee.getIdEmployee()%>">
+                                <button class="btn btn-primary" type="submit">Update</button>
                             </form>
                         </td>
-                    </tr>
 
-                    <% }%>
+                    </tr>
+<% }%>
 
                 </tbody>
             </table>
-            <div class="btn-group">
-                <a href=CreateEmployee.jsp class="btn btn-primary" aria-current="page">Create Employees</a>
-            </div>
+            
             <div class="btn-group">
                 <a href="http://localhost:8080/AltayerMotorsWeb" class="btn btn-primary" aria-current="page">Menu</a>
             </div>      

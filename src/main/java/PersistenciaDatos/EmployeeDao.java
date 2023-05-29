@@ -48,17 +48,7 @@ public class EmployeeDao {
                 String jobPosition = rs.getString(8);
                 String salary = rs.getString(9);
                 
-                
-                System.out.println("employeeId: " + employeeId);
-                System.out.println("name: " + name);
-                System.out.println("phoneNumber: " + phoneNumber);
-                System.out.println("address: " + address);
-                System.out.println("email: " + email);
-                System.out.println("user: " + user);
-                System.out.println("state: " + state);
-                System.out.println("jobPosition: " + jobPosition);
-                System.out.println("salary: " + salary);
-                
+            
                 EmployeeWeb newEmployee= new EmployeeWeb(name, phoneNumber, address, email, salary, jobPosition, employeeId, user, state);
                 
                 ListEmployees.add(newEmployee);
@@ -90,9 +80,10 @@ public class EmployeeDao {
                 ps.setString(2, employee.getPhoneNumber());
                 ps.setString(3, employee.getAddress());
                 ps.setString(4, employee.getEmail());
-                ps.setString(5, employee.getJobPosition());
-                ps.setString(6, employee.getUser());
-                ps.setString(7, employee.getState());
+                
+                ps.setString(5, employee.getUser());
+                ps.setString(6, employee.getState());
+                ps.setString(7, employee.getJobPosition());
                 ps.setString(8, employee.getSalary());
 
                 ps.executeUpdate();
@@ -112,22 +103,19 @@ public class EmployeeDao {
      includeDriver();
 
         Conexion db_connect = new Conexion();
+        String query = "update employee set name=?, phone_number=?, address=?, email=?,user=?, state=?,job_position=?, salary=? where id_employee=?";
 
-        try (Connection conexion = db_connect.getConnection()) {
-            PreparedStatement ps = null;
-
-            try {
-                String query = "update employee set name=?, phone_number=?, address=?, email=>, user=?, state=?, job_position=?, salary=?) where id_employee=?";
-                ps = conexion.prepareStatement(query);
+        try (Connection conexion = db_connect.getConnection()){
+                PreparedStatement ps = conexion.prepareStatement(query);
                 ps.setString(1, employee.getName());
                 ps.setString(2, employee.getPhoneNumber());
                 ps.setString(3, employee.getAddress());
-                ps.setString(4, employee.getEmail());
-                ps.setString(5, employee.getJobPosition());
-                ps.setString(6, employee.getUser());
-                ps.setString(7, employee.getState());
+                ps.setString(4, employee.getEmail());             
+                ps.setString(5, employee.getUser());             
+                ps.setString(6, employee.getState());
+                ps.setString(7, employee.getJobPosition());
                 ps.setString(8, employee.getSalary());
-                ps.setInt(9,employee.getIdEmploployee());
+                ps.setInt(9,employee.getIdEmployee());
 
                 ps.executeUpdate();
                 db_connect.closeConection();
@@ -135,11 +123,43 @@ public class EmployeeDao {
             } catch (SQLException ex) {
                 System.out.println(ex);
             }
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
+        
     }
-
+    
+    
+    public static EmployeeWeb getId(int idEmployee){
+        
+        includeDriver();
+        EmployeeWeb employee = new EmployeeWeb();
+        Conexion dbConexion = new Conexion();
+        String query="select * from employee where id_employee=?";
+        
+        try (Connection conexion = dbConexion.getConnection()){
+            PreparedStatement ps= conexion.prepareStatement(query);
+            ps.setInt(1,idEmployee);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                
+                String name = rs.getString(2);
+                String phoneNumber = rs.getString(3);
+                String address = rs.getString(4);
+                String email = rs.getString(5);
+                String user=rs.getString(6);
+                String state=rs.getString(7);
+                String jobPosition = rs.getString(8);
+                String salary = rs.getString(9);
+                
+                employee = new EmployeeWeb(name, phoneNumber, address, email, salary, jobPosition, idEmployee, user, state);
+                
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return employee;
+    
+    }
     
     public static void deleteEmployee(int id_employee){
         includeDriver();

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package Servlet.Vehicle;
 
 import PersistenciaDatos.VehicleDao;
@@ -14,10 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author kathemacbook
- */
+
 @WebServlet(name = "VehicleUpdateServlet", urlPatterns = {"/Vehicle/Update"})
 public class VehicleUpdateServlet extends HttpServlet {
 
@@ -32,6 +25,7 @@ public class VehicleUpdateServlet extends HttpServlet {
         
         int idVehicle = Integer.parseInt(request.getParameter("carIdUpdate"));
         System.out.println("id vehicle enviado: " +idVehicle);
+        
         String action = "Update";
         
         VehicleWeb updateVehicle = VehicleDao.getVehicle(idVehicle);
