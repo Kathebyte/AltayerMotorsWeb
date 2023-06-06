@@ -8,7 +8,7 @@ package backend;
 public class EmployeeWeb extends UserWeb {
     
     String salary;
-    String jobPosition;
+    int jobPosition;
     int idEmployee;
     String user;
     String state; 
@@ -17,8 +17,6 @@ public class EmployeeWeb extends UserWeb {
         super("", "", "", "");
     }
 
-    
-  
     public EmployeeWeb(String name, String phoneNumber, String address, String email,String salary, String jobPosition, int idEmployee, String user, String state) {
         super(name, phoneNumber, address, email);
         this.salary = salary;

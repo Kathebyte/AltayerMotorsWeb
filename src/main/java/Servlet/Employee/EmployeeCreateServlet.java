@@ -54,6 +54,8 @@ public class EmployeeCreateServlet extends HttpServlet {
         String jobPosition=request.getParameter("jobPosition");
         String salary=request.getParameter("salary");
         
+        
+        
         EmployeeWeb newEmployee = new EmployeeWeb(name, phoneNumber, address, email, salary, jobPosition, user, state);
         
         newEmployee.setName(name);

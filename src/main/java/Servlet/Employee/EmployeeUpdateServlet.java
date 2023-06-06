@@ -59,7 +59,7 @@ public class EmployeeUpdateServlet extends HttpServlet {
         String address = request.getParameter("address");
         String email = request.getParameter("email");
         String state = request.getParameter("state");
-        String jobPosition = request.getParameter("jobPostion");
+        String jobPosition = request.getParameter("jobPosition");
         String salary = request.getParameter("salary");
 
         EmployeeWeb newEmployee = (EmployeeWeb) request.getSession().getAttribute("employee");
