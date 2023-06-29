@@ -33,9 +33,11 @@
                         <th scope="col">Phone number</th>
                         <th scope="col">Address</th>
                         <th scope="col">Email address</th>
+                         <th scope="col">Job Position</th>
+                         <th scope="col">Salary</th>
                         <th scope="col">State</th>
-                        <th scope="col">Job Position</th>
-                        <th scope="col">Salary</th>
+                       
+                        
 
 
                     </tr>

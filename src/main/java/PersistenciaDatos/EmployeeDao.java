@@ -27,24 +27,15 @@ public class EmployeeDao {
 
         List<EmployeeWeb> ListEmployees = new ArrayList<>();
 
-        String query = "select\n"
-                + "    id_employee,\n"
-                + "    employee.name as name,\n"
-                + "    phone_number,\n"
-                + "    address,\n"
-                + "    email,\n"
-                + "    user,\n"
-                + "    state,\n"
-                + "    job_position.name as job_position,\n"
-                + "    salary\n"
-                + "from\n"
-                + "    employee\n"
-                + "inner join job_position\n"
-                + "    on employee.id_job_position = job_position.id_job_position";
+        String query = "select id_employee, employee.name as name, phone_number, address, email, user, job_position.name as "
+                + "job_position, salary, state.name as state from employee inner join state on "
+                + "employee.id_state = state.id_state inner join job_position  on employee.id_job_position = job_position.id_job_position";
+        
+        
         Conexion db_connect = new Conexion();
 
         try (
-                Connection conexion = db_connect.getConnection()) {
+            Connection conexion = db_connect.getConnection()) {
             PreparedStatement ps = conexion.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
 
@@ -74,6 +65,7 @@ public class EmployeeDao {
 
     }
 
+
     public static void createEmployeeDB(EmployeeWeb employee) {
         includeDriver();
 
@@ -83,7 +75,7 @@ public class EmployeeDao {
             PreparedStatement ps = null;
 
             try {
-                String query = "INSERT INTO employee (name, phone_number, address, email, user, state, xxxxxxxxxxxxXXXXXXX, salary) VALUES (?,?,?,?,?,?,?,?)";
+                String query = "INSERT INTO employee (name, phone_number, address, email, user, id_job_position, salary, id_state) VALUES (?,?,?,?,?,?,?,?)";
                 ps = conexion.prepareStatement(query);
                 ps.setString(1, employee.getName());
                 ps.setString(2, employee.getPhoneNumber());
@@ -110,7 +102,7 @@ public class EmployeeDao {
         includeDriver();
 
         Conexion db_connect = new Conexion();
-        String Updatequery = "update employee set name=?, phone_number=?, address=?, email=?,user=?, state=?,id_job_position=?, salary=? where id_employee=?";
+        //String Updatequery = ";
 
         try (Connection conexion = db_connect.getConnection()) {
             PreparedStatement updateStatement = conexion.prepareStatement(Updatequery);
@@ -120,7 +112,7 @@ public class EmployeeDao {
             updateStatement.setString(4, employee.getEmail());
             updateStatement.setString(5, employee.getUser());
             updateStatement.setString(6, employee.getState());
-            updateStatement.setInt(7, employee.getJobPosition());
+            updateStatement.setString(7, employee.getJobPosition());
             updateStatement.setString(8, employee.getSalary());
             updateStatement.setInt(9, employee.getIdEmployee());
 

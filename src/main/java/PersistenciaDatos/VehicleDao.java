@@ -29,8 +29,10 @@ public class VehicleDao {
             PreparedStatement ps = null;
 
             try {
-                String query = "INSERT INTO vehicle (make, brand, year, color, prices, miliage, warrantyTime, accidentHistory, typeCar) VALUES (?,?,?,?,?,?,?,?,?)";
+                String query = "INSERT INTO vehicle(id_make, id_brand, year, id_color, prices, miliage, warrantyTime, id_accident_history, id_type_car) VALUES (?,?,?,?,?,?,?,?,?)";
+                
                 ps = conexion.prepareStatement(query);
+                
                 ps.setString(1, vehicle.getMake());
                 ps.setString(2, vehicle.getBrand());
                 ps.setString(3, vehicle.getYear());
@@ -56,7 +58,13 @@ public class VehicleDao {
         includeDriver();
         List<VehicleWeb> ListVehicles = new ArrayList<>();
 
-        String query = "select * from vehicle";
+        String query = "select carId, make.name as make, brand.name as brand, year ,color.name as color,prices,miliage,warrantyTime,accident_history.name as accident_history,type_car.name as type_car\n" +
+                "from vehicle\n" +
+                "inner join make  on vehicle.id_make = make.id_make\n" +
+                "inner join brand on vehicle.id_brand = brand.id_brand\n" +
+                "inner join color  on vehicle.id_color = color.id_color\n" +
+                "inner join  accident_history  on vehicle.id_accident_history = accident_history.id_accident_history\n" +
+                "inner join  type_car on vehicle.id_type_car = type_car.id_type_car";
         Conexion db_connect = new Conexion();
 
         try (
@@ -113,7 +121,7 @@ public class VehicleDao {
         includeDriver();
 
         Conexion db_connect = new Conexion();
-        String query = "update vehicle set make=?,brand=?, year=?,color=?,prices=?,miliage=?,warrantyTime=?,accidentHistory=?,typeCar=? where carId=?";
+        String query =  "update vehicle set id_make=?,id_brand=?,year=?,id_color=?,prices=?,miliage=?,warrantyTime=?,id_accident_history=?,id_type_car =? where carId = ?";
 
         try (Connection conexion = db_connect.getConnection()) {
             PreparedStatement ps = conexion.prepareStatement(query);

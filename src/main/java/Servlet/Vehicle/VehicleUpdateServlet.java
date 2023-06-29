@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 @WebServlet(name = "VehicleUpdateServlet", urlPatterns = {"/Vehicle/Update"})
 public class VehicleUpdateServlet extends HttpServlet {
 
@@ -22,22 +21,22 @@ public class VehicleUpdateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         int idVehicle = Integer.parseInt(request.getParameter("carIdUpdate"));
-        System.out.println("id vehicle enviado: " +idVehicle);
-        
+        System.out.println("id vehicle enviado: " + idVehicle);
+
         String action = "Update";
-        
+
         VehicleWeb updateVehicle = VehicleDao.getVehicle(idVehicle);
-        
+
         System.out.println("**********************");
-        System.out.println("CarId: " +updateVehicle.getCarId());
-        System.out.println("Make: " +updateVehicle.getMake());
-       
+        System.out.println("CarId: " + updateVehicle.getCarId());
+        System.out.println("Make: " + updateVehicle.getMake());
+
         HttpSession session = request.getSession(false);
         session.setAttribute("vehicle", updateVehicle);
         session.setAttribute("action", action);
-        
+
         response.sendRedirect("VehicleForm.jsp");
 
     }
@@ -45,24 +44,24 @@ public class VehicleUpdateServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String make = request.getParameter("make");
-        String brand= request.getParameter("brand");
+        String brand = request.getParameter("brand");
         String year = request.getParameter("year");
-        String miliage= request.getParameter("miliage");
-        String color= request.getParameter("color");
-        String prices= request.getParameter("prices");
-        String typeCar =request.getParameter("typeCar");
-        String warrantyTime=request.getParameter("warrantyTime");
-        String accidentHistory=request.getParameter("accidentHistory");
+        String color = request.getParameter("color");
+        String prices = request.getParameter("prices");
+        String miliage = request.getParameter("miliage");
+        String warrantyTime = request.getParameter("warrantyTime");
+        String accidentHistory = request.getParameter("accidentHistory");
+        String typeCar = request.getParameter("typeCar");
         
-        VehicleWeb newVehicle= (VehicleWeb) request.getSession().getAttribute("vehicle");
-        
-        int pricesV =0;
-        if ( prices != null){
+        VehicleWeb newVehicle = (VehicleWeb) request.getSession().getAttribute("vehicle");
+
+        int pricesV = 0;
+        if (prices != null) {
             pricesV = Integer.parseInt(prices);
         }
-        
+
         newVehicle.setMake(make);
         newVehicle.setBrand(brand);
         newVehicle.setYear(year);
@@ -72,12 +71,11 @@ public class VehicleUpdateServlet extends HttpServlet {
         newVehicle.setTypeCar(typeCar);
         newVehicle.setWarrantyTime(warrantyTime);
         newVehicle.setAccidentHistory(accidentHistory);
-        
+
         VehicleDao.updateVehicle(newVehicle);
         System.out.println("Servlet de actualización ejecutado");
         response.sendRedirect("List");
-        
-        
+
     }
 
     @Override

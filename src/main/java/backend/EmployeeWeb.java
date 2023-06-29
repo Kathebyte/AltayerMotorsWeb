@@ -8,7 +8,7 @@ package backend;
 public class EmployeeWeb extends UserWeb {
     
     String salary;
-    int jobPosition;
+    String jobPosition;
     int idEmployee;
     String user;
     String state; 
@@ -74,7 +74,14 @@ public class EmployeeWeb extends UserWeb {
         this.state = state;
     }
 
- 
+    public boolean validateNumber(String number){
+       try {
+           Integer.parseInt(number);
+           return true;
+       } catch (Exception e) {
+           return false;
+       }
+}
  
 }
  
