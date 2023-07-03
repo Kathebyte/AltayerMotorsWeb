@@ -97,33 +97,33 @@ public class EmployeeDao {
         }
     }
 
-    public static void updateEmployee(EmployeeWeb employee) {
-
-        includeDriver();
-
-        Conexion db_connect = new Conexion();
-        //String Updatequery = ";
-
-        try (Connection conexion = db_connect.getConnection()) {
-            PreparedStatement updateStatement = conexion.prepareStatement(Updatequery);
-            updateStatement.setString(1, employee.getName());
-            updateStatement.setString(2, employee.getPhoneNumber());
-            updateStatement.setString(3, employee.getAddress());
-            updateStatement.setString(4, employee.getEmail());
-            updateStatement.setString(5, employee.getUser());
-            updateStatement.setString(6, employee.getState());
-            updateStatement.setString(7, employee.getJobPosition());
-            updateStatement.setString(8, employee.getSalary());
-            updateStatement.setInt(9, employee.getIdEmployee());
-
-            updateStatement.executeUpdate();
-            db_connect.closeConection();
-
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-
-    }
+//    public static void updateEmployee(EmployeeWeb employee) {
+//
+//        includeDriver();
+//
+//        Conexion db_connect = new Conexion();
+//        String Updatequery = update ;
+//
+//        try (Connection conexion = db_connect.getConnection()) {
+//            PreparedStatement updateStatement = conexion.prepareStatement(Updatequery);
+//            updateStatement.setString(1, employee.getName());
+//            updateStatement.setString(2, employee.getPhoneNumber());
+//            updateStatement.setString(3, employee.getAddress());
+//            updateStatement.setString(4, employee.getEmail());
+//            updateStatement.setString(5, employee.getUser());
+//            updateStatement.setString(6, employee.getState());
+//            updateStatement.setString(7, employee.getJobPosition());
+//            updateStatement.setString(8, employee.getSalary());
+//            updateStatement.setInt(9, employee.getIdEmployee());
+//
+//            updateStatement.executeUpdate();
+//            db_connect.closeConection();
+//
+//        } catch (SQLException ex) {
+//            System.out.println(ex);
+//        }
+//
+//    }
 
     public static EmployeeWeb getId(int idEmployee) {
 

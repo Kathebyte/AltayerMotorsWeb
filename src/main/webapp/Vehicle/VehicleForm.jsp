@@ -202,9 +202,9 @@
                 <div class="row mb-3">
                     <label class="col-3 col-form-label">Accident History</label>
                     <div class="col-9">
-                        <select class="form-select" id="accidentHistory" name="accidentHistory">
-                            <option <%=(accidentHistory.equals("1")) ? "selected" : ""%>value="1">Yes</option>
-                            <option <%=(accidentHistory.equals("2")) ? "selected" : ""%>value="2">No</option>
+                        <select class="form-select" id="accidentHistory" name="accidentHistory" value="<%=accidentHistory%>">
+                            <option <%=(accidentHistory.equals("1")) ? "selected" : ""%> value="1">True</option>
+                            <option <%=(accidentHistory.equals("0")) ? "selected" : ""%> value="0">False</option>
                         </select>
                     </div>
                 </div>

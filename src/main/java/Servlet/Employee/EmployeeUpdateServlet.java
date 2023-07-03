@@ -74,7 +74,7 @@ public class EmployeeUpdateServlet extends HttpServlet {
         newEmployee.setSalary(salary);
 
 
-        EmployeeDao.updateEmployee(newEmployee);
+        //EmployeeDao.updateEmployee(newEmployee);
         System.out.println("servlet Employee actualizando");
         response.sendRedirect("List");
 

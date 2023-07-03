@@ -46,13 +46,29 @@ inner join color  on vehicle.id_color = color.id_color
 inner join  accident_history  on vehicle.id_accident_history = accident_history.id_accident_history
 inner join  type_car on vehicle.id_type_car = type_car.id_type_car;
 
+DELETE FROM accident_history;
+select * from vehicle;
 
-select *
-FROM employee
-         order by name desc ;
+UPDATE vehicle
+set id_make=?,
+    id_brand=?,
+    year=?,
+    id_color=?,
+    prices=?,
+    miliage=?,
+    warrantyTime=?,
+    accident_history=?,
+    id_type_car=?
+where carId=?;
 
-select *
-FROM employee
-         order by salary asc ;
+
+UPDATE vehicle
+SET accident_history = 0
+WHERE carId = 25;
+
+
+
+
+
 
 
