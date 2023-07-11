@@ -78,14 +78,12 @@ public class VehicleCreateServlet extends HttpServlet {
 
         response.sendRedirect("List");
         System.out.println("Servlet de creación ejecutado");
+        
+        
        
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+    
     @Override
     public String getServletInfo() {
         return "Short description";

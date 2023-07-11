@@ -69,7 +69,7 @@ public class EmployeeListServlet extends HttpServlet {
         employee1.setSalary(salary);
         employee1.setJobPosition(jobPosition);
         employee1.setUser(user);
-        employee1.setState(state);
+        employee1.setState(true);
 
     }
 

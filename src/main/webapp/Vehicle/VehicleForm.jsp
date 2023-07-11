@@ -203,8 +203,8 @@
                     <label class="col-3 col-form-label">Accident History</label>
                     <div class="col-9">
                         <select class="form-select" id="accidentHistory" name="accidentHistory" value="<%=accidentHistory%>">
-                            <option <%=(accidentHistory.equals("1")) ? "selected" : ""%> value="1">True</option>
-                            <option <%=(accidentHistory.equals("0")) ? "selected" : ""%> value="0">False</option>
+                            <option <%=(accidentHistory.equals("True")) ? "selected" : ""%> value="1">True</option>
+                            <option <%=(accidentHistory.equals("False")) ? "selected" : ""%> value="0">False</option>
                         </select>
                     </div>
                 </div>

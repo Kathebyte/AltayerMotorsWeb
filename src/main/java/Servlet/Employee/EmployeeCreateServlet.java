@@ -48,15 +48,24 @@ public class EmployeeCreateServlet extends HttpServlet {
         String salary=request.getParameter("salary");
         
         
+ 
+        EmployeeWeb newEmployee = new EmployeeWeb(name, phoneNumber, address, email, salary, jobPosition, user, true);
         
-        EmployeeWeb newEmployee = new EmployeeWeb(name, phoneNumber, address, email, salary, jobPosition, user, state);
+        System.out.println("Estado del empleado: " + newEmployee.getState());
+        
+         boolean state1 = true;
+        if (state != null) {
+            state1 = Boolean.parseBoolean(state);
+        }
+        
+        
         
         newEmployee.setName(name);
         newEmployee.setPhoneNumber(phoneNumber);
         newEmployee.setAddress(address);
         newEmployee.setEmail(email);
         newEmployee.setUser(user);
-        newEmployee.setState(state);
+        newEmployee.setState(state1);
         newEmployee.setJobPosition(jobPosition);
         newEmployee.setSalary(salary);
         

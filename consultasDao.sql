@@ -23,12 +23,6 @@ insert into accident_history (name) values ('Yes'),('No');
 select * from accident_history;
 ALTER TABLE type_car AUTO_INCREMENT = 300;
 
-insert into vehicle (id_make, id_brand, year, id_color, prices, miliage, warrantyTime, id_accident_history, id_type_car)  VALUES
-('Toyota', 'Camry', 2022, 'Blue', 25000, 5000, '2 years', 'No', 'Sedan'),
-('Ford', 'Mustang', 2021, 'Red', 35000, 10000, '1 year', 'No', 'Sports Car'),
-('Honda', 'Civic', 2020, 'White', 20000, 8000, '1 year', 'Yes', 'Compact Car'),
-('BMW', 'X5', 2019, 'Black', 50000, 20000, '3 years', 'No', 'SUV'),
-('Mercedes-Benz', 'C-Class', 2021, 'Silver', 45000, 15000, '2 years', 'No', 'Luxury Car');
 select * from brand;
 select * from color;
 select * from accident_history;
@@ -66,9 +60,34 @@ UPDATE vehicle
 SET accident_history = 0
 WHERE carId = 25;
 
+update employee
+set state =1
+where id_employee = 42;
 
 
 
+select * from employee;
 
 
+# alter table employee
+# drop foreign key employee_state_id_state_fk;Eliminar una llave foranea
 
+
+update employee
+set name = ?,
+    phone_number=?,
+    address=?,
+    email=?,
+    user=?,
+    id_job_position=?,
+    salary=?,
+    state=?
+where id_employee=?;
+
+select id_employee,emploname,phone_number,address,email,user,job_position.name as job_position,salary,state
+from employee
+inner join job_position on employee.id_job_position = job_position.id_job_position;
+
+
+select *
+from employee;

@@ -11,13 +11,23 @@ public class EmployeeWeb extends UserWeb {
     String jobPosition;
     int idEmployee;
     String user;
-    String state; 
+    boolean state; 
 
     public EmployeeWeb() {
         super("", "", "", "");
     }
 
-    public EmployeeWeb(String name, String phoneNumber, String address, String email,String salary, String jobPosition, int idEmployee, String user, String state) {
+    public EmployeeWeb(String salary, String jobPosition, int idEmployee, String user, boolean state, String name, String phoneNumber, String address, String email) {
+        super(name, phoneNumber, address, email);
+        this.salary = salary;
+        this.jobPosition = jobPosition;
+        this.idEmployee = idEmployee;
+        this.user = user;
+        this.state = state;
+    }
+
+  
+    public EmployeeWeb(String name, String phoneNumber, String address, String email,String salary, String jobPosition, int idEmployee, String user, boolean state) {
         super(name, phoneNumber, address, email);
         this.salary = salary;
         this.jobPosition = jobPosition;
@@ -26,7 +36,7 @@ public class EmployeeWeb extends UserWeb {
         this.state = state;
     }
     
-    public EmployeeWeb(String name, String phoneNumber, String address, String email,String salary, String jobPosition, String user, String state) {
+    public EmployeeWeb(String name, String phoneNumber, String address, String email,String salary, String jobPosition, String user, boolean state) {
         super(name, phoneNumber, address, email);
         this.salary = salary;
         this.jobPosition = jobPosition;
@@ -66,14 +76,17 @@ public class EmployeeWeb extends UserWeb {
         this.user = user;
     }
 
-    public String getState() {
+    public boolean getState() {
+         System.out.println("Estado: " + state);
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(boolean state) {
         this.state = state;
     }
+    
 
+    
     public boolean validateNumber(String number){
        try {
            Integer.parseInt(number);
@@ -81,7 +94,8 @@ public class EmployeeWeb extends UserWeb {
        } catch (Exception e) {
            return false;
        }
-}
- 
+    }
+    
+
 }
  

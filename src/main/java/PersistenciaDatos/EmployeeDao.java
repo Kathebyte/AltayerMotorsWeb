@@ -27,9 +27,7 @@ public class EmployeeDao {
 
         List<EmployeeWeb> ListEmployees = new ArrayList<>();
 
-        String query = "select id_employee, employee.name as name, phone_number, address, email, user, job_position.name as "
-                + "job_position, salary, state.name as state from employee inner join state on "
-                + "employee.id_state = state.id_state inner join job_position  on employee.id_job_position = job_position.id_job_position";
+        String query = "select employee.id_employee,employee.name,employee.phone_number,employee.address,employee.email,employee.user,job_position.name as job_position,salary,employee.state from employee inner join job_position on employee.id_job_position = job_position.id_job_position";
         
         
         Conexion db_connect = new Conexion();
@@ -46,11 +44,13 @@ public class EmployeeDao {
                 String address = rs.getString(4);
                 String email = rs.getString(5);
                 String user = rs.getString(6);
-                String state = rs.getString(7);
-                String jobPosition = rs.getString(8);
-                String salary = rs.getString(9);
+                String jobPosition = rs.getString(7);
+                String salary = rs.getString(8);
+                Boolean state = rs.getBoolean(9);    
+                
+                
 
-                EmployeeWeb newEmployee = new EmployeeWeb(name, phoneNumber, address, email, salary, jobPosition, employeeId, user, state);
+                EmployeeWeb newEmployee = new EmployeeWeb(salary, jobPosition, employeeId, user, state, name, phoneNumber, address, email);
 
                 ListEmployees.add(newEmployee);
 
@@ -75,15 +75,15 @@ public class EmployeeDao {
             PreparedStatement ps = null;
 
             try {
-                String query = "INSERT INTO employee (name, phone_number, address, email, user, id_job_position, salary, id_state) VALUES (?,?,?,?,?,?,?,?)";
+                String query = "INSERT INTO employee (name, phone_number, address, email, user, id_job_position, salary, state) VALUES (?,?,?,?,?,?,?,?)";
                 ps = conexion.prepareStatement(query);
                 ps.setString(1, employee.getName());
                 ps.setString(2, employee.getPhoneNumber());
                 ps.setString(3, employee.getAddress());
                 ps.setString(4, employee.getEmail());
                 ps.setString(5, employee.getUser());
-                ps.setString(6, employee.getState());
-                ps.setString(7, employee.getJobPosition());
+                ps.setString(6, employee.getJobPosition());
+                ps.setBoolean(7,employee.getState());
                 ps.setString(8, employee.getSalary());
 
                 ps.executeUpdate();
@@ -97,33 +97,42 @@ public class EmployeeDao {
         }
     }
 
-//    public static void updateEmployee(EmployeeWeb employee) {
-//
-//        includeDriver();
-//
-//        Conexion db_connect = new Conexion();
-//        String Updatequery = update ;
-//
-//        try (Connection conexion = db_connect.getConnection()) {
-//            PreparedStatement updateStatement = conexion.prepareStatement(Updatequery);
-//            updateStatement.setString(1, employee.getName());
-//            updateStatement.setString(2, employee.getPhoneNumber());
-//            updateStatement.setString(3, employee.getAddress());
-//            updateStatement.setString(4, employee.getEmail());
-//            updateStatement.setString(5, employee.getUser());
-//            updateStatement.setString(6, employee.getState());
-//            updateStatement.setString(7, employee.getJobPosition());
-//            updateStatement.setString(8, employee.getSalary());
-//            updateStatement.setInt(9, employee.getIdEmployee());
-//
-//            updateStatement.executeUpdate();
-//            db_connect.closeConection();
-//
-//        } catch (SQLException ex) {
-//            System.out.println(ex);
-//        }
-//
-//    }
+    public static void updateEmployee(EmployeeWeb employee) {
+
+        includeDriver();
+
+        Conexion db_connect = new Conexion();
+        String Updatequery = "update employee \n" +
+"set name = ?,\n" +
+"    phone_number=?,\n" +
+"    address=?,\n" +
+"    email=?,\n" +
+"    user=?,\n" +
+"    id_job_position=?,\n" +
+"    salary=?,\n" +
+"    state=?\n" +
+"where id_employee=?"; 
+
+        try (Connection conexion = db_connect.getConnection()) {
+            PreparedStatement updateStatement = conexion.prepareStatement(Updatequery);
+            updateStatement.setString(1, employee.getName());
+            updateStatement.setString(2, employee.getPhoneNumber());
+            updateStatement.setString(3, employee.getAddress());
+            updateStatement.setString(4, employee.getEmail());
+            updateStatement.setString(5, employee.getUser());
+            updateStatement.setBoolean(6, employee.getState());
+            updateStatement.setString(7, employee.getJobPosition());
+            updateStatement.setString(8, employee.getSalary());
+            updateStatement.setInt(9, employee.getIdEmployee());
+
+            updateStatement.executeUpdate();
+            db_connect.closeConection();
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+
+    }
 
     public static EmployeeWeb getId(int idEmployee) {
 
@@ -145,7 +154,7 @@ public class EmployeeDao {
                 String address = rs.getString(4);
                 String email = rs.getString(5);
                 String user = rs.getString(6);
-                String state = rs.getString(7);
+                Boolean state = rs.getBoolean(7);
                 String jobPosition = rs.getString(8);
                 String salary = rs.getString(9);
 

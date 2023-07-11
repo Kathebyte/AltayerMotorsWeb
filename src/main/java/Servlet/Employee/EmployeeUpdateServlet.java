@@ -63,13 +63,18 @@ public class EmployeeUpdateServlet extends HttpServlet {
         String salary = request.getParameter("salary");
 
         EmployeeWeb newEmployee = (EmployeeWeb) request.getSession().getAttribute("employee");
+        
+        boolean state1 = true;
+        if (state != null) {
+            state1 = Boolean.parseBoolean(state);
+        }
 
         newEmployee.setUser(user);
         newEmployee.setName(name);
         newEmployee.setPhoneNumber(phoneNumber);
         newEmployee.setAddress(address);
         newEmployee.setEmail(email);
-        newEmployee.setState(state);
+        newEmployee.setState(state1);
         newEmployee.setJobPosition(jobPosition);
         newEmployee.setSalary(salary);
 

@@ -37,7 +37,7 @@
         email = updateEmployee.getEmail();
         jobPosition = updateEmployee.getJobPosition();
         user = updateEmployee.getUser();
-        state = updateEmployee.getState();
+        state = String.valueOf(updateEmployee.getState());
         salary = updateEmployee.getSalary();
 
     }
@@ -105,8 +105,8 @@
                 <label for="states" class="col-3 col-form-label">State:</label>
                 <div class="col-9">
                     <select class="form-select" id="state" name="state" value="<%=state%>">
-                        <option <%= (state.equals("Active")) ? "selected" : ""%>>Active</option>
-                        <option <%= (state.equals("Inactive")) ? "selected" : ""%>>Inactive</option>
+                        <option <%= (state.equals("True")) ? "selected" : "1"%>>True</option>
+                        <option <%= (state.equals("False")) ? "selected" : "0"%>>False</option>
                     </select>
                 </div>
             </div>
