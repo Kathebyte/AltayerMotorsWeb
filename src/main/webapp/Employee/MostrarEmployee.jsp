@@ -58,9 +58,9 @@
                         <td><%= employee.getEmail()%></td>
                         <td> 
                             <% if (employee.getState() == 0) { %>
-                            <span class="badge bg-danger">Inactivo</span>
+                            <span class="badge bg-danger">Inactive</span>
                             <% } else if (employee.getState() == 1) { %>
-                            <span class="badge bg-success">Activo</span>
+                            <span class="badge bg-success">Active</span>
                              <% } %>
                         </td>
                          <td><%= employee.getJobPosition()%></td>

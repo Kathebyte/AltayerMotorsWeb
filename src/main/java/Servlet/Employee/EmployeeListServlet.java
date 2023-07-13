@@ -43,6 +43,7 @@ public class EmployeeListServlet extends HttpServlet {
         misesion.setAttribute("listaEmployee", listaEmployee);
         response.sendRedirect("MostrarEmployee.jsp");
         
+        
     }
 
     
@@ -66,7 +67,7 @@ public class EmployeeListServlet extends HttpServlet {
             stateV = Integer.parseInt(state);
         }
         
-          double salary1 = 0.0;
+          double salary1 = 0;
         if ( salary != null){
             salary1 = Double.parseDouble(salary);
         }
@@ -80,6 +81,9 @@ public class EmployeeListServlet extends HttpServlet {
         employee1.setJobPosition(jobPosition);
         employee1.setUser(user);
         employee1.setState(stateV);
+        
+        
+        
 
     }
 

@@ -60,6 +60,11 @@ public class VehicleCreateServlet extends HttpServlet {
             pricesV = Integer.parseInt(prices);
         }
         
+        int accidentHistory1 = 0;
+        if(accidentHistory != null){
+            accidentHistory1  = Integer.parseInt(accidentHistory);
+        }
+        
         newVehicle.setMake(make);
         newVehicle.setBrand(brand);
         newVehicle.setYear(year);
@@ -68,7 +73,7 @@ public class VehicleCreateServlet extends HttpServlet {
         newVehicle.setPrices(pricesV);
         newVehicle.setTypeCar(typeCar);
         newVehicle.setWarrantyTime(warrantyTime);
-        newVehicle.setAccidentHistory(accidentHistory);
+        newVehicle.setAccidentHistory(accidentHistory1);
        
         VehicleDao.createVehicledDB(newVehicle);
         

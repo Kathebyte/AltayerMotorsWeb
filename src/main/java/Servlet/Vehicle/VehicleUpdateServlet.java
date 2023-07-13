@@ -61,6 +61,11 @@ public class VehicleUpdateServlet extends HttpServlet {
         if (prices != null) {
             pricesV = Integer.parseInt(prices);
         }
+        
+          int accidentHistory1 = 0;
+        if (accidentHistory != null) {
+            accidentHistory1 = Integer.parseInt(accidentHistory);
+        }
 
         newVehicle.setMake(make);
         newVehicle.setBrand(brand);
@@ -70,7 +75,7 @@ public class VehicleUpdateServlet extends HttpServlet {
         newVehicle.setPrices(pricesV);
         newVehicle.setTypeCar(typeCar);
         newVehicle.setWarrantyTime(warrantyTime);
-        newVehicle.setAccidentHistory(accidentHistory);
+        newVehicle.setAccidentHistory(accidentHistory1);
 
         VehicleDao.updateVehicle(newVehicle);
         System.out.println("Servlet de actualización ejecutado");

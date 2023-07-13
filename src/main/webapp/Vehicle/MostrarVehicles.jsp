@@ -55,7 +55,13 @@
                         <td> <%=vehiculo.getPrices()%></td>
                         <td> <%=vehiculo.getMiliage()%></td>
                         <td> <%=vehiculo.getWarrantyTime()%></td>
-                        <td> <%=vehiculo.getAccidentHistory()%></td>
+                        <td> 
+                            <% if (vehiculo.getAccidentHistory() == 0) { %>
+                                <span class="badge bg-danger">Not</span>
+                            <% } else if (vehiculo.getAccidentHistory() == 1) { %>
+                                <span class="badge bg-success">Yes</span>
+                             <% } %>
+                        </td>
                         <td> <%=vehiculo.getTypeCar()%></td>
                         <td>
                             <form action="Delete" method="POST">

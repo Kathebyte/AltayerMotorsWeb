@@ -53,6 +53,8 @@ public class EmployeeDao {
                 EmployeeWeb newEmployee = new EmployeeWeb(name, phoneNumber, address, email, salary, jobPosition, employeeId, user, state);
 
                 ListEmployees.add(newEmployee);
+                
+                System.out.println("salary "+salary);
 
             }
 
@@ -154,9 +156,14 @@ public class EmployeeDao {
                 String address = rs.getString(4);
                 String email = rs.getString(5);
                 String user = rs.getString(6);
-                int state = rs.getInt(7);
-                String jobPosition = rs.getString(8);
-                double salary = rs.getDouble(9);
+                
+                String jobPosition = rs.getString(7);
+                double salary = rs.getDouble(8);
+                int state = rs.getInt(9);
+                
+                
+                
+                System.out.println("SALARY: " + salary);
 
                 employee = new EmployeeWeb(name, phoneNumber, address, email, salary, jobPosition, idEmployee, user, state);
 

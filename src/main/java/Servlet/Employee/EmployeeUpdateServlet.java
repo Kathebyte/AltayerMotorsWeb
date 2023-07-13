@@ -28,10 +28,11 @@ public class EmployeeUpdateServlet extends HttpServlet {
 
         int idEmployee = Integer.parseInt(request.getParameter("idEmployee"));
         System.out.println("ID ENVIADO PARA ACTUALIZAR " + idEmployee);
-
+        
         String action = "Update";
 
         EmployeeWeb updateEmployee = EmployeeDao.getId(idEmployee);
+        System.out.println("salary: " +updateEmployee.getSalary());
 
 
         HttpSession session = request.getSession(false);
@@ -40,7 +41,7 @@ public class EmployeeUpdateServlet extends HttpServlet {
         session.setAttribute("action", action);
 
         response.sendRedirect("EmployeeForm.jsp");
-
+     
     }
 
     @Override
@@ -59,14 +60,15 @@ public class EmployeeUpdateServlet extends HttpServlet {
         EmployeeWeb newEmployee = (EmployeeWeb) request.getSession().getAttribute("employee");
         
         int stateV = 0;
-        if ( state != null){
+            if ( state != null){
             stateV = Integer.parseInt(state);
-        }
+            }
  
-            double salary1 = 0.0;
-        if ( salary != null){
+        double salary1 = 0.0;
+            if ( salary != null){
             salary1 = Double.parseDouble(salary);
-        }
+            }
+   
 
         newEmployee.setUser(user);
         newEmployee.setName(name);
@@ -82,8 +84,7 @@ public class EmployeeUpdateServlet extends HttpServlet {
         System.out.println("servlet Employee actualizando");
         response.sendRedirect("List");
         
-        System.out.println("el salario actualizado es: "+salary);
-        
+    
     }
 
     @Override

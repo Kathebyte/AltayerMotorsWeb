@@ -47,14 +47,18 @@ public class VehicleListServlet extends HttpServlet {
         String accidentHistory = request.getParameter("accidentHistory");
         String typeCar = request.getParameter("typeCar");
         
-        VehicleWeb vehicle1 = new VehicleWeb();
+        VehicleWeb vehicle1 = new VehicleWeb(make, brand, year, miliage, color, 0, typeCar, warrantyTime, accidentHistory);
 
         int prices1 = 0;
 
         if (prices != null) {
             prices1 = Integer.parseInt(prices);
         }
-
+        int accidentHistory1 = 0;
+        if(accidentHistory != null){
+            accidentHistory1 = Integer.parseInt(accidentHistory);
+        }
+       
         vehicle1.setMake(make);
         vehicle1.setBrand(brand);
         vehicle1.setYear(year);
@@ -63,7 +67,7 @@ public class VehicleListServlet extends HttpServlet {
         vehicle1.setPrices(prices1);
         vehicle1.setTypeCar(typeCar);
         vehicle1.setWarrantyTime(warrantyTime);
-        vehicle1.setAccidentHistory(accidentHistory);
+        vehicle1.setAccidentHistory(accidentHistory1);
 
     }
 

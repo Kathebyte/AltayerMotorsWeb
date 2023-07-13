@@ -31,7 +31,7 @@
         prices = String.valueOf(updateVehicle.getPrices());
         typeCar = updateVehicle.getTypeCar();
         warrantyTime = updateVehicle.getWarrantyTime();
-        accidentHistory = updateVehicle.getAccidentHistory();
+        accidentHistory = String.valueOf(updateVehicle.getAccidentHistory());
     }
     System.out.println("hola este es el make que estoy seleccionando"+ make);
 %>
@@ -203,8 +203,8 @@
                     <label class="col-3 col-form-label">Accident History</label>
                     <div class="col-9">
                         <select class="form-select" id="accidentHistory" name="accidentHistory" value="<%=accidentHistory%>">
-                            <option <%=(accidentHistory.equals("True")) ? "selected" : ""%> value="1">True</option>
-                            <option <%=(accidentHistory.equals("False")) ? "selected" : ""%> value="0">False</option>
+                            <option <%=(accidentHistory.equals("Yes")) ? "selected" : ""%> value="1">Yes</option>
+                            <option <%=(accidentHistory.equals("Not")) ? "selected" : ""%> value="0">Not</option>
                         </select>
                     </div>
                 </div>

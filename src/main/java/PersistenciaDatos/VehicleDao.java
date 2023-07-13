@@ -40,7 +40,7 @@ public class VehicleDao {
                 ps.setInt(5, vehicle.getPrices());
                 ps.setString(6, vehicle.getMiliage());
                 ps.setString(7, vehicle.getWarrantyTime());
-                ps.setString(8, vehicle.getAccidentHistory());
+                ps.setInt(8, vehicle.getAccidentHistory());
                 ps.setString(9, vehicle.getTypeCar());
 
                 ps.executeUpdate();
@@ -80,9 +80,9 @@ public class VehicleDao {
                 int prices = rs.getInt(6);
                 String miliage = rs.getString(7);
                 String warrantyTime = rs.getString(8);
-                String accidentHistory = rs.getString(9);
+                int accidentHistory = rs.getInt(9);
                 String type_car = rs.getString(10);
-
+                
                 VehicleWeb vehicleNew = new VehicleWeb(carId, make, brand, year, miliage, color, prices, type_car, warrantyTime, accidentHistory);
                 ListVehicles.add(vehicleNew);
 
@@ -131,7 +131,7 @@ public class VehicleDao {
             ps.setInt(5, vehicle.getPrices());
             ps.setString(6, vehicle.getMiliage());
             ps.setString(7, vehicle.getWarrantyTime());
-            ps.setString(8, vehicle.getAccidentHistory());
+            ps.setInt(8, vehicle.getAccidentHistory());
             ps.setString(9, vehicle.getTypeCar());
             ps.setInt(10, vehicle.getCarId());
 
@@ -165,7 +165,7 @@ public class VehicleDao {
                     int prices = rs.getInt(6);
                     String miliage = rs.getString(7);
                     String warrantyTime = rs.getString(8);
-                    String accidentHistory = rs.getString(9);
+                    int accidentHistory = rs.getInt(9);
                     String type_car = rs.getString(10);    
 
                     vehicle = new VehicleWeb(vehicleId, make, brand, year, miliage, color, prices, type_car, warrantyTime, accidentHistory);

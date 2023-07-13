@@ -13,9 +13,9 @@ public class VehicleWeb {
      int prices;
      String typeCar;
      String warrantyTime;
-     String accidentHistory;
+     int accidentHistory;
 
-    public VehicleWeb(int carId, String make, String brand, String year, String miliage, String color, int prices, String typeCar, String warrantyTime, String accidentHistory) {
+    public VehicleWeb(int carId, String make, String brand, String year, String miliage, String color, int prices, String typeCar, String warrantyTime, int accidentHistory) {
         this.carId = carId;
         this.make = make;
         this.brand = brand;
@@ -31,7 +31,7 @@ public class VehicleWeb {
     public VehicleWeb() {
     }
     
-      public VehicleWeb( String make, String brand, String year, String miliage, String color, int prices, String typeCar, String warrantyTime, String accidentHistory) {
+      public VehicleWeb( String make, String brand, String year, String miliage, String color, int prices, String typeCar, String warrantyTime, int accidentHistory) {
           
         this.make = make;
         this.brand = brand;
@@ -116,16 +116,14 @@ public class VehicleWeb {
         this.warrantyTime = warrantyTime;
     }
 
-    public String getAccidentHistory() {
+    public int getAccidentHistory() {
         return accidentHistory;
     }
 
-    public void setAccidentHistory(String accidentHistory) {
+    public void setAccidentHistory(int accidentHistory) {
         this.accidentHistory = accidentHistory;
     }
 
-
-    
 }
     
 
