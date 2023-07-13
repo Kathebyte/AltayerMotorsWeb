@@ -61,15 +61,25 @@ public class EmployeeListServlet extends HttpServlet {
         
         EmployeeWeb employee1= new EmployeeWeb();
         
+         int stateV = 0;
+        if ( state != null){
+            stateV = Integer.parseInt(state);
+        }
+        
+          double salary1 = 0.0;
+        if ( salary != null){
+            salary1 = Double.parseDouble(salary);
+        }
+        
         
         employee1.setName(name);
         employee1.setPhoneNumber(phoneNumber);
         employee1.setAddress(address);
         employee1.setEmail(email);
-        employee1.setSalary(salary);
+        employee1.setSalary(salary1);
         employee1.setJobPosition(jobPosition);
         employee1.setUser(user);
-        employee1.setState(true);
+        employee1.setState(stateV);
 
     }
 

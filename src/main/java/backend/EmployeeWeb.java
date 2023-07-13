@@ -7,17 +7,17 @@ package backend;
 
 public class EmployeeWeb extends UserWeb {
     
-    String salary;
+    Double salary;
     String jobPosition;
     int idEmployee;
     String user;
-    boolean state; 
+    int state; 
 
     public EmployeeWeb() {
         super("", "", "", "");
     }
 
-    public EmployeeWeb(String salary, String jobPosition, int idEmployee, String user, boolean state, String name, String phoneNumber, String address, String email) {
+    public EmployeeWeb(Double salary, String jobPosition, int idEmployee, String user, int state, String name, String phoneNumber, String address, String email) {
         super(name, phoneNumber, address, email);
         this.salary = salary;
         this.jobPosition = jobPosition;
@@ -27,7 +27,7 @@ public class EmployeeWeb extends UserWeb {
     }
 
   
-    public EmployeeWeb(String name, String phoneNumber, String address, String email,String salary, String jobPosition, int idEmployee, String user, boolean state) {
+    public EmployeeWeb(String name, String phoneNumber, String address, String email,Double salary, String jobPosition, int idEmployee, String user, int state) {
         super(name, phoneNumber, address, email);
         this.salary = salary;
         this.jobPosition = jobPosition;
@@ -36,7 +36,7 @@ public class EmployeeWeb extends UserWeb {
         this.state = state;
     }
     
-    public EmployeeWeb(String name, String phoneNumber, String address, String email,String salary, String jobPosition, String user, boolean state) {
+    public EmployeeWeb(String name, String phoneNumber, String address, String email,Double salary, String jobPosition, String user, int state) {
         super(name, phoneNumber, address, email);
         this.salary = salary;
         this.jobPosition = jobPosition;
@@ -44,11 +44,11 @@ public class EmployeeWeb extends UserWeb {
         this.state = state;
     }
 
-    public String getSalary() {
+    public Double getSalary() {
         return salary;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(Double salary) {
         this.salary = salary;
     }
 
@@ -76,12 +76,11 @@ public class EmployeeWeb extends UserWeb {
         this.user = user;
     }
 
-    public boolean getState() {
-         System.out.println("Estado: " + state);
+    public int getState() {
         return state;
     }
 
-    public void setState(boolean state) {
+    public void setState(int state) {
         this.state = state;
     }
     

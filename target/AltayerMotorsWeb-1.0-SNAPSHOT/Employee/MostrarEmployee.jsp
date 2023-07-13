@@ -56,14 +56,14 @@
                         <td><%= employee.getPhoneNumber()%></td>
                         <td><%= employee.getAddress()%></td>
                         <td><%= employee.getEmail()%></td>
-                        <td>
-                            <% if (employee.getState()) { %>
-                            <span class="badge bg-success">Active</span>
-                            <% } else { %>
-                            <span class="badge bg-danger">Inactive</span>
-                            <% }%>
+                        <td> 
+                            <% if (employee.getState() == 0) { %>
+                            <span class="badge bg-danger">Inactivo</span>
+                            <% } else if (employee.getState() == 1) { %>
+                            <span class="badge bg-success">Activo</span>
+                             <% } %>
                         </td>
-                        <td><%= employee.getJobPosition()%></td>
+                         <td><%= employee.getJobPosition()%></td>
                         <td><%= employee.getSalary()%></td>
                         <td>
                             <form action="Delete" method="POST">

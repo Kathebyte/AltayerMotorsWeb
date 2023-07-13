@@ -45,12 +45,12 @@ public class EmployeeDao {
                 String email = rs.getString(5);
                 String user = rs.getString(6);
                 String jobPosition = rs.getString(7);
-                String salary = rs.getString(8);
-                Boolean state = rs.getBoolean(9);    
+                double salary = rs.getDouble(8);
+                int state = rs.getInt(9);    
                 
                 
 
-                EmployeeWeb newEmployee = new EmployeeWeb(salary, jobPosition, employeeId, user, state, name, phoneNumber, address, email);
+                EmployeeWeb newEmployee = new EmployeeWeb(name, phoneNumber, address, email, salary, jobPosition, employeeId, user, state);
 
                 ListEmployees.add(newEmployee);
 
@@ -73,7 +73,7 @@ public class EmployeeDao {
 
         try (Connection conexion = db_connect.getConnection()) {
             PreparedStatement ps = null;
-
+        
             try {
                 String query = "INSERT INTO employee (name, phone_number, address, email, user, id_job_position, salary, state) VALUES (?,?,?,?,?,?,?,?)";
                 ps = conexion.prepareStatement(query);
@@ -82,9 +82,9 @@ public class EmployeeDao {
                 ps.setString(3, employee.getAddress());
                 ps.setString(4, employee.getEmail());
                 ps.setString(5, employee.getUser());
-                ps.setString(6, employee.getJobPosition());
-                ps.setBoolean(7,employee.getState());
-                ps.setString(8, employee.getSalary());
+                ps.setString(6, employee.getJobPosition());                
+                ps.setDouble(7, employee.getSalary());
+                ps.setInt(8, employee.getState());
 
                 ps.executeUpdate();
                 db_connect.closeConection();
@@ -103,15 +103,15 @@ public class EmployeeDao {
 
         Conexion db_connect = new Conexion();
         String Updatequery = "update employee \n" +
-"set name = ?,\n" +
-"    phone_number=?,\n" +
-"    address=?,\n" +
-"    email=?,\n" +
-"    user=?,\n" +
-"    id_job_position=?,\n" +
-"    salary=?,\n" +
-"    state=?\n" +
-"where id_employee=?"; 
+                                "set name = ?,\n" +
+                                "    phone_number=?,\n" +
+                                "    address=?,\n" +
+                                "    email=?,\n" +
+                                "    user=?,\n" +
+                                "    id_job_position=?,\n" +
+                                "    salary=?,\n" +
+                                "    state=?\n" +
+                                "where id_employee=?"; 
 
         try (Connection conexion = db_connect.getConnection()) {
             PreparedStatement updateStatement = conexion.prepareStatement(Updatequery);
@@ -120,9 +120,9 @@ public class EmployeeDao {
             updateStatement.setString(3, employee.getAddress());
             updateStatement.setString(4, employee.getEmail());
             updateStatement.setString(5, employee.getUser());
-            updateStatement.setBoolean(6, employee.getState());
-            updateStatement.setString(7, employee.getJobPosition());
-            updateStatement.setString(8, employee.getSalary());
+            updateStatement.setString(6, employee.getJobPosition());
+            updateStatement.setDouble(7, employee.getSalary());
+            updateStatement.setInt(8, employee.getState());
             updateStatement.setInt(9, employee.getIdEmployee());
 
             updateStatement.executeUpdate();
@@ -154,9 +154,9 @@ public class EmployeeDao {
                 String address = rs.getString(4);
                 String email = rs.getString(5);
                 String user = rs.getString(6);
-                Boolean state = rs.getBoolean(7);
+                int state = rs.getInt(7);
                 String jobPosition = rs.getString(8);
-                String salary = rs.getString(9);
+                double salary = rs.getDouble(9);
 
                 employee = new EmployeeWeb(name, phoneNumber, address, email, salary, jobPosition, idEmployee, user, state);
 

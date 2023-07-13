@@ -33,12 +33,6 @@ public class EmployeeUpdateServlet extends HttpServlet {
 
         EmployeeWeb updateEmployee = EmployeeDao.getId(idEmployee);
 
-        System.out.println("***************************** SERVLET*******");
-        System.out.println("id Employee = " + updateEmployee.getIdEmployee());
-        System.out.println("name employee= " + updateEmployee.getName());
-        System.out.println("state ="+updateEmployee.getState());
-        System.out.println("user ="+updateEmployee.getUser ());
-        System.out.println(" jobPOSITION="+updateEmployee.getJobPosition());
 
         HttpSession session = request.getSession(false);
 
@@ -64,9 +58,14 @@ public class EmployeeUpdateServlet extends HttpServlet {
 
         EmployeeWeb newEmployee = (EmployeeWeb) request.getSession().getAttribute("employee");
         
-        boolean state1 = true;
-        if (state != null) {
-            state1 = Boolean.parseBoolean(state);
+        int stateV = 0;
+        if ( state != null){
+            stateV = Integer.parseInt(state);
+        }
+ 
+            double salary1 = 0.0;
+        if ( salary != null){
+            salary1 = Double.parseDouble(salary);
         }
 
         newEmployee.setUser(user);
@@ -74,15 +73,17 @@ public class EmployeeUpdateServlet extends HttpServlet {
         newEmployee.setPhoneNumber(phoneNumber);
         newEmployee.setAddress(address);
         newEmployee.setEmail(email);
-        newEmployee.setState(state1);
+        newEmployee.setState(stateV);
         newEmployee.setJobPosition(jobPosition);
-        newEmployee.setSalary(salary);
+        newEmployee.setSalary(salary1);
 
 
-        //EmployeeDao.updateEmployee(newEmployee);
+        EmployeeDao.updateEmployee(newEmployee);
         System.out.println("servlet Employee actualizando");
         response.sendRedirect("List");
-
+        
+        System.out.println("el salario actualizado es: "+salary);
+        
     }
 
     @Override
