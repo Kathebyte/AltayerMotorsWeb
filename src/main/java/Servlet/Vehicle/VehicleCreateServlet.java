@@ -53,7 +53,7 @@ public class VehicleCreateServlet extends HttpServlet {
         String warrantyTime=request.getParameter("warrantyTime");
         String accidentHistory=request.getParameter("accidentHistory");
         
-        VehicleWeb newVehicle= new VehicleWeb(make, brand, year, miliage, color, 0, typeCar, warrantyTime, accidentHistory);
+        VehicleWeb newVehicle= new VehicleWeb();
         
         int pricesV =0;
         if ( prices != null){
