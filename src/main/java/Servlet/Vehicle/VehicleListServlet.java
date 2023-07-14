@@ -47,7 +47,7 @@ public class VehicleListServlet extends HttpServlet {
         String accidentHistory = request.getParameter("accidentHistory");
         String typeCar = request.getParameter("typeCar");
         
-        VehicleWeb vehicle1 = new VehicleWeb(make, brand, year, miliage, color, 0, typeCar, warrantyTime, accidentHistory);
+        VehicleWeb vehicle1 = new VehicleWeb();
 
         int prices1 = 0;
 

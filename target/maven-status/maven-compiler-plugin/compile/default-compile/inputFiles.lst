@@ -10,14 +10,15 @@
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/backend/VehicleWeb.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/Servlet/Vehicle/VehicleCreateServlet.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/Servlet/Customer/CustomerListServlet.java
+/Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/Servlet/Sale/SaleCreateServlet.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/PersistenciaDatos/CustomerDao.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/Servlet/Customer/CustomerCreateServlet.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/PersistenciaDatos/db_connect.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/PersistenciaDatos/Conexion.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/backend/CustomerWeb.java
+/Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/backend/Sale.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/Servlet/Employee/EmployeeListServlet.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/Servlet/Employee/EmployeeCreateServlet.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/Servlet/ValidarServlet.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/PersistenciaDatos/EmployeeDao.java
-/Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/backend/Sales.java
 /Users/kathemacbook/NetBeansProjects/AltayerMotorsWeb/src/main/java/PersistenciaDatos/VehicleDao.java
