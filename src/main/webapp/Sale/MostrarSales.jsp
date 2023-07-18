@@ -49,9 +49,13 @@
                         <td><%=sale1.getVehicle().getBrand()%></td>
                         <td><%=sale1.getVehicle().getPrices()%></td>
                         <td><%=sale1.getCustomer().getName()%></td>
+                        <td>
+                            <form action="Generate/Invoice" method="GET">
+                            <input type="hidden" name="saleId" value="<%= sale1.getIdSale() %>">
+                            <button type="submit" class="btn btn-primary">Generar factura</button>
+                        </form>
+                        </td>
                     </tr>
-
-                    </div>
                     <% }%>
                 </tbody>
             </table>
