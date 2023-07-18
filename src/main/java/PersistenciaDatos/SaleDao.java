@@ -4,7 +4,10 @@
  */
 package PersistenciaDatos;
 
+import backend.CustomerWeb;
+import backend.EmployeeWeb;
 import backend.Sale;
+import backend.VehicleWeb;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -51,18 +54,19 @@ public class SaleDao {
     }
     
     public static List<Sale> ListSale (){
+        includeDriver();
         
         List <Sale> listSales = new ArrayList<>();
                 
             String query="select id_sale, date, employee.name as Employee_Name , make.name as Make,  brand.name as Brand, vehicle.prices as Prices,\n" +
 "       customer.name as Customer_Name\n" +
-"\n" +
-"    from sale\n" +
-"    inner join vehicle  on sale.id_vehicle = vehicle.carId\n" +
-"    inner join  customer  on sale.id_customer = customer.idCustomer\n" +
-"    inner join employee  on sale.id_employee = employee.id_employee\n" +
-"    inner join make on vehicle.id_make = make.id_make\n" +
-"    inner   join brand on  vehicle.id_brand = brand.id_brand";
+        "\n" +
+        "    from sale\n" +
+        "    inner join vehicle  on sale.id_vehicle = vehicle.carId\n" +
+        "    inner join  customer  on sale.id_customer = customer.idCustomer\n" +
+        "    inner join employee  on sale.id_employee = employee.id_employee\n" +
+        "    inner join make on vehicle.id_make = make.id_make\n" +
+        "    inner   join brand on  vehicle.id_brand = brand.id_brand";
             
              Conexion db_connect = new Conexion();
              
@@ -70,18 +74,30 @@ public class SaleDao {
             Connection conexion = db_connect.getConnection()) {
             PreparedStatement ps = conexion.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
+            
 
             while (rs.next()) {
-                int idSale = rs.getInt(1);
-                LocalDate date = rs.getObject(2, LocalDate.class);
-                int employeeId= rs.getInt(3);
-                int carId= rs.getInt(4);
-                int customerId= rs.getInt(5);
+                    int idSale = rs.getInt(1);
+                    LocalDate date = rs.getObject(2, LocalDate.class);
+                    String employeeName = rs.getString(3);
+                    String vehicleMake = rs.getString(4);
+                    String vehicleBrand = rs.getString(5);
+                    int vehiclePrices = rs.getInt(6);
+                    String customerName = rs.getString(7);
        
-                Sale newSale = new Sale(idSale, date, employeeId, carId, customerId);
-                listSales.add(newSale);
+                VehicleWeb vehicle = new VehicleWeb();
+                vehicle.setMake(vehicleMake);
+                vehicle.setBrand(vehicleBrand);
+                vehicle.setPrices(vehiclePrices);
                 
+                EmployeeWeb employee = new EmployeeWeb();
+               employee.setName(employeeName);
                
+               CustomerWeb customer = new CustomerWeb();
+               customer.setName(customerName);
+               
+              Sale newSale = new Sale(idSale, date, 0, 0, 0, vehicle, employee, customer);
+              listSales.add(newSale);
             }
 
         } catch (SQLException ex) {

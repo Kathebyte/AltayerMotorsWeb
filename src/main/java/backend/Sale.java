@@ -12,6 +12,20 @@ public class Sale {
     int employeeId;
     int carId;
     int customerId;
+    private VehicleWeb vehicle;
+    private EmployeeWeb employee;
+    private CustomerWeb customer;
+
+    public Sale(int idSale, LocalDate date, int employeeId, int carId, int customerId, VehicleWeb vehicle, EmployeeWeb employee, CustomerWeb customer) {
+        this.idSale = idSale;
+        this.date = date;
+        this.employeeId = employeeId;
+        this.carId = carId;
+        this.customerId = customerId;
+        this.vehicle = vehicle;
+        this.employee = employee;
+        this.customer = customer;
+    }
 
     public Sale(int idSale, LocalDate date, int employeeId, int carId, int customerId) {
         this.idSale = idSale;
@@ -63,7 +77,30 @@ public class Sale {
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
-    
-    
-    
+
+    public VehicleWeb getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(VehicleWeb vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public EmployeeWeb getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(EmployeeWeb employee) {
+        this.employee = employee;
+    }
+
+    public CustomerWeb getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(CustomerWeb customer) {
+        this.customer = customer;
+    }
+
+   
 }

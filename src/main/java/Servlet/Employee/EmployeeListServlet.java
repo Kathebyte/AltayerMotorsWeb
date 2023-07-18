@@ -1,9 +1,5 @@
 package Servlet.Employee;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 
 
 import PersistenciaDatos.EmployeeDao;
@@ -18,10 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author kathemacbook
- */
 @WebServlet(urlPatterns = {"/Employee/List"})
 public class EmployeeListServlet extends HttpServlet {
 
@@ -42,6 +34,8 @@ public class EmployeeListServlet extends HttpServlet {
         HttpSession misesion = request.getSession();
         misesion.setAttribute("listaEmployee", listaEmployee);
         response.sendRedirect("MostrarEmployee.jsp");
+        
+
         
         
     }

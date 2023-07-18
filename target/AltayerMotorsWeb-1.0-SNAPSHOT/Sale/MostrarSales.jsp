@@ -4,7 +4,8 @@
     Author     : kathemacbook
 --%>
 
-<%@page import="java.awt.List"%>
+<%@page import="backend.EmployeeWeb"%>
+<%@page import="java.util.List"%>
 <%@page import="backend.Sale"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,7 +20,7 @@
                 margin-top: 20px;
             }
         </style>
-        <body>
+    <body>
         <div class="container">
             <table class="table table-striped table-hover">
                 <thead>
@@ -35,14 +36,29 @@
                 </thead>
                 <tbody>
                     <%
-                        List <Sale> listSales (List<Sale>)request.getSession().getAttribute("listSales");
+                        List<Sale> listSales = (List<Sale>) request.getSession().getAttribute("listSales");
                         for (Sale sale1 : listSales) {
+                            //pendiente traer los datos de los customer, employee, vehicle.
+
                     %>
-                      <tr>
+                    <tr>
                         <td><%= sale1.getIdSale()%></td>
-                        <td><%= sale1.get()%></td>
-                        <td><%= employee.getName()%></td>
-                        <td><%= employee.getPhoneNumber()%></td>
-                        <td><%= employee.getAddress()%></td>
-                        <td><%= employee.getEmail()%></td>
+                        <td><%= sale1.getDate()%></td>
+                        <td><%=sale1.getEmployee().getName()%></td>
+                        <td><%=sale1.getVehicle().getMake()%></td>
+                        <td><%=sale1.getVehicle().getBrand()%></td>
+                        <td><%=sale1.getVehicle().getPrices()%></td>
+                        <td><%=sale1.getCustomer().getName()%></td>
+                    </tr>
+
+                    </div>
+                    <% }%>
+                </tbody>
+            </table>
+            <div class="btn-group">
+                <a href="/AltayerMotorsWeb" class="btn btn-primary" aria-current="page">Menu</a>
+            </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    </body>
+</html>

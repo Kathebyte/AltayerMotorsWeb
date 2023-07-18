@@ -9,7 +9,6 @@ import backend.Sale;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,14 +35,11 @@ public class SaleListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        List <Sale> listSales = new ArrayList<>();
-        
-        listSales= SaleDao.ListSale();
-        
+        List <Sale> listSales = SaleDao.ListSale();
+
         HttpSession misesion = request.getSession();
         misesion.setAttribute("listSales", listSales);
-        response.sendRedirect("MostrarSales.jsp");
-        
+        request.getRequestDispatcher("MostrarSales.jsp").forward(request, response);
     }
 
     
@@ -72,19 +68,14 @@ public class SaleListServlet extends HttpServlet {
        SaleDao.CreateSale(newSale);
         
         HttpSession misesion = request.getSession();
-        misesion.setAttribute("employee", newSale);
+        misesion.setAttribute("listSales", newSale);
 
-        response.sendRedirect("List");
-        
-        
+//        response.sendRedirect("MostrarSales.jsp");
+
     }
     
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+
     @Override
     public String getServletInfo() {
         return "Short description";
