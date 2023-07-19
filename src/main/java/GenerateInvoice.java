@@ -32,8 +32,9 @@ public class GenerateInvoice extends HttpServlet {
         System.out.println("ID ENVIADO PARA IMPRIMIR FACTURA " + idSale);
         
         
+        
         Sale saleInvoice = SaleDao.GenerateInvoice(idSale);
-       
+        System.out.println("datos para facturar customer name: " +saleInvoice.getCustomer().getName() );
 
         HttpSession misesion = request.getSession();
         misesion.setAttribute("Sale",saleInvoice);
