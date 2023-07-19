@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(urlPatterns = {"/Generate/Invoice"})
+@WebServlet(urlPatterns = {"/Sale/GenerateInvoice"})
 public class GenerateInvoice extends HttpServlet {
 
 
@@ -27,7 +27,7 @@ public class GenerateInvoice extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        int idSale = Integer.parseInt(request.getParameter("idSale"));
+        int idSale = Integer.parseInt(request.getParameter("saleId"));
         
         System.out.println("ID ENVIADO PARA IMPRIMIR FACTURA " + idSale);
         
