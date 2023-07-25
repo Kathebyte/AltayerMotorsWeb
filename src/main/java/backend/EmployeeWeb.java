@@ -4,6 +4,8 @@
  */
 package backend;
 
+import java.util.List;
+
 
 public class EmployeeWeb extends UserWeb {
     
@@ -93,6 +95,10 @@ public class EmployeeWeb extends UserWeb {
        } catch (Exception e) {
            return false;
        }
+    }
+
+    public void add(List<EmployeeWeb> employee) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 

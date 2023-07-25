@@ -4,9 +4,17 @@
     Author     : kathemacbook
 --%>
 
+<%@page import="backend.CustomerWeb"%>
+<%@page import="backend.VehicleWeb"%>
 <%@page import="backend.EmployeeWeb"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+
+<% List<EmployeeWeb> listEmployee = (List<EmployeeWeb>) session.getAttribute("listEmployee");%>
+<% List<VehicleWeb> listVehicles =(List<VehicleWeb>)session.getAttribute("listVehicles");%>
+<% List<CustomerWeb> listCustomer = (List<CustomerWeb>)session.getAttribute("listCustomer");%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,7 +28,7 @@
             }
         </style>
     </head>
-    <body>
+    
         <form action="Create" method="POST">
             <div class="container">
                 <h2 class="my-4">CREATE SALE</h2>
@@ -31,30 +39,59 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label class="col-3 col-form-label">Id Employee</label>
-                    <div class="col-9">
-                    <input class="form-control" type="text" name="idEmployee" >
-                    </div>
-            </div>
-                    <div class="row mb-3">
-                        <label class="col-3 col-form-label">Id Car</label>
+                    <form action="Create" method="post">
+                        <label class="col-3 col-form-label">Select Employee:</label>
                         <div class="col-9">
-                            <input class="form-control" type="text" name="idCar">
+                            <select class="form-select" name="idEmployee" >
+                                <%
+                                    for (EmployeeWeb employee : listEmployee) {
+                                        %>
+                                        <option value="<%=employee.getIdEmployee() %>"><%=employee.getName() %></option>
+                                        <%
+                                    }
+                                %>
+                                
+                                </select>
                         </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-3 col-form-label">Id Customer</label>
-                        <div class="col-9">
-                            <input class="form-control" type="text" name="idCustomer">
+                        <div class="row mb-3">
+                            <label class="col-3 col-form-label">Select Vehicle:</label>
+                            <div class="col-9">
+                                <select class="form-select" name="carId">
+                                <% 
+                                for (VehicleWeb vehicle : listVehicles){
+                                    %>
+                                    <option value="<%=vehicle.getCarId() %>"><%=vehicle.getMake() %>, <%=vehicle.getBrand()%>, <%=vehicle.getColor()%>, <%=vehicle.getTypeCar()%>, 
+                                    <%=vehicle.getMiliage()%>, <%=vehicle.getWarrantyTime()%>, <%=vehicle.getYear()%>, <%=vehicle.getPrices()%>
+                                    </option>
+                                            
+                                    <%
+                                        }
+                                    %>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row py-4">
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Save</button>
-                            <a href="/AltayerMotorsWeb" class="btn btn-secondary">Menu</a>
+                        <div class="row mb-3">
+                            <label class="col-3 col-form-label">Select Customer:</label>
+                            <div class="col-9">
+                                <select class="form-select" name="idCustomer">
+                                    <% for (CustomerWeb customer : listCustomer){
+                                    %>
+                                    <option value="<%=customer.getId()%>"><%=customer.getName() %>, <%=customer.getEmail()%>, <%=customer.getPhoneNumber()%> 
+                                    </option>
+                                    <%    
+                                    }
+                                    %>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-
+                        <div class="row py-4">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                <a href="/AltayerMotorsWeb" class="btn btn-secondary">Menu</a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
+            </div>
         </form>
-    </body>
+    

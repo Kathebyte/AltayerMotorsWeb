@@ -65,7 +65,7 @@ public class SaleDao {
                 + "    inner join  customer  on sale.id_customer = customer.idCustomer\n"
                 + "    inner join employee  on sale.id_employee = employee.id_employee\n"
                 + "    inner join make on vehicle.id_make = make.id_make\n"
-                + "    inner   join brand on  vehicle.id_brand = brand.id_brand";
+                + "    inner join brand on  vehicle.id_brand = brand.id_brand order by id_Sale desc;";
 
         Conexion db_connect = new Conexion();
 
@@ -194,24 +194,7 @@ public class SaleDao {
         return invoiceSale;
     }
     
-    public static void GetEmployee(int employeeId){
-        includeDriver();
-        
-        Conexion db_connect = new Conexion();
-        
-        String query= "select concat(id_employee, '-', name) as id_name\n" +
-        "from employee";
+   
 
-        try (Connection conexion = db_connect.getConnection(); 
-        PreparedStatement ps = conexion.prepareStatement(query)) {
-
-            ps.setInt(1,employeeId );
-            ResultSet rs = ps.executeQuery();
-        
-    } catch (SQLException ex) {
-                System.out.println(ex);
-            }
-       
-}
 }
 

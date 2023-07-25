@@ -6,6 +6,7 @@ backend/EmployeeWeb.class
 Servlet/Vehicle/VehicleCreateServlet.class
 Servlet/Employee/EmployeeUpdateServlet.class
 PersistenciaDatos/Conexion.class
+PersistenciaDatos/SaleDao.class
 Servlet/Customer/CustomerUpdateServlet.class
 Servlet/Customer/CustomerDeleteServlet.class
 PersistenciaDatos/VehicleDao.class

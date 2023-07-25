@@ -5,11 +5,18 @@ package Servlet.Sale;
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
+import PersistenciaDatos.CustomerDao;
+import PersistenciaDatos.EmployeeDao;
 import PersistenciaDatos.SaleDao;
+import PersistenciaDatos.VehicleDao;
+import backend.CustomerWeb;
+import backend.EmployeeWeb;
 import backend.Sale;
+import backend.VehicleWeb;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,10 +43,17 @@ public class SaleCreateServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String action="Create";
+        List<EmployeeWeb> listEmployee= EmployeeDao.mostrarEmployees();
+        
+        List<VehicleWeb> listVehicles = VehicleDao.mostrarVehicles();
+        
+        List<CustomerWeb> listCustomer = CustomerDao.mostrarCustomers();
+        
         HttpSession session= request.getSession();
         
-        session.setAttribute("action", action);
+        session.setAttribute("listEmployee", listEmployee);
+        session.setAttribute("listVehicles", listVehicles);
+        session.setAttribute("listCustomer", listCustomer);
         response.sendRedirect("SaleForm.jsp");
     }
 
@@ -48,10 +62,9 @@ public class SaleCreateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
         String date= request.getParameter("date");
         String employeeId= request.getParameter("idEmployee");
-        String carId= request.getParameter("idCar");
+        String carId= request.getParameter("carId");
         String customerId=request.getParameter("idCustomer");
         
         int employeeId1 =(employeeId != null) ? Integer.parseInt(employeeId) : 0;
@@ -59,7 +72,8 @@ public class SaleCreateServlet extends HttpServlet {
         int customerId1 = (customerId !=null) ? Integer.parseInt(customerId) : 0;
         LocalDate localDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         
-       
+        System.out.println("Estoy en el servlet Sale Create");
+        System.out.println("date: "+date +" employee "+employeeId + " customerId "+ customerId + "employee id " + employeeId);
         Sale newSale = new Sale();
 
         newSale.setDate(localDate);
@@ -67,11 +81,10 @@ public class SaleCreateServlet extends HttpServlet {
         newSale.setCarId(carId1);
         newSale.setEmployeeId(employeeId1);
         
-       SaleDao.CreateSale(newSale);
+        SaleDao.CreateSale(newSale);
         
         HttpSession misesion = request.getSession();
-        misesion.setAttribute("employee", newSale);
-
+        
         response.sendRedirect("List");
         
         
