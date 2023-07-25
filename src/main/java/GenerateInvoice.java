@@ -6,6 +6,7 @@
 import PersistenciaDatos.SaleDao;
 import backend.Sale;
 import java.io.IOException;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,15 +32,20 @@ public class GenerateInvoice extends HttpServlet {
         
         System.out.println("ID ENVIADO PARA IMPRIMIR FACTURA " + idSale);
         
+        try{
+            Sale saleInvoice = SaleDao.GenerateInvoice(idSale);
         
-        
-        Sale saleInvoice = SaleDao.GenerateInvoice(idSale);
         System.out.println("datos para facturar customer name: " +saleInvoice.getCustomer().getName() );
-
+        System.out.println("datos para facturar id: " +saleInvoice.getIdSale() );
         HttpSession misesion = request.getSession();
         misesion.setAttribute("Sale",saleInvoice);
         request.getRequestDispatcher("GenerateInvoice.jsp").forward(request, response);
         
+        } catch (SQLException ex){
+            System.out.println("servlet do get en generate invoices ");
+            System.out.println(ex);
+        }
+            
     }
 
     

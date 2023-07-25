@@ -108,68 +108,110 @@ public class SaleDao {
     }
 
     public static Sale GenerateInvoice(int saleId) throws SQLException {
-    includeDriver();
-    Conexion db_connect = new Conexion();
+        includeDriver();
+        Conexion db_connect = new Conexion();
 
-    String query = "SELECT sale.id_sale, sale.date, customer.name AS nameCustomer, customer.address AS Address, customer.email AS Email, customer.phoneNumber AS PhoneNumber,\n"
-            + "       employee.name AS EmployeeName, employee.address AS EmployeeOffice, make.name AS Make,\n"
-            + "       brand.name AS Brand, vehicle.prices AS Prices\n"
-            + "    FROM sale\n"
-            + "        INNER JOIN customer ON sale.id_customer = customer.idCustomer\n"
-            + "        INNER JOIN employee ON sale.id_employee = employee.id_employee\n"
-            + "        INNER JOIN vehicle ON sale.id_vehicle = vehicle.carId\n"
-            + "        INNER JOIN make ON vehicle.id_make = make.id_make\n"
-            + "        INNER JOIN brand ON vehicle.id_brand = brand.id_brand\n"
-            + "    WHERE sale.id_sale = ?";
+        String query = "select  sale.id_sale, sale.date,\n" +
+        "        employee.name as Employee_Name , employee.address as offices, employee.id_employee as id_employee,\n" +
+        "        make.name as Make,  brand.name as Brand,\n" +
+        "        vehicle.prices as Prices, vehicle.year as Year,\n" +
+        "        color.name as color, vehicle.miliage as Miliage, vehicle.warrantyTime as WarrantyTime, \n" +
+        "        type_car.name as Type_car,\n" + 
+        "        customer.name as Customer_Name,customer.email as email, customer.phoneNumber as phoneNumber\n" +
+        "\n" +
+        "    from sale\n" +
+        "    inner join vehicle  on sale.id_vehicle = vehicle.carId\n" +
+        "    inner join  customer  on sale.id_customer = customer.idCustomer\n" +
+        "    inner join employee  on sale.id_employee = employee.id_employee\n" +
+        "    inner join make on vehicle.id_make = make.id_make\n" +
+        "    inner   join brand on  vehicle.id_brand = brand.id_brand\n" +
+        "    inner join color on vehicle.id_color = color.id_color\n" +
+        "    inner join type_car join type_car tc on vehicle.id_type_car = tc.id_type_car\n" +
+        "    where id_sale=?";
 
-    Sale invoiceSale = null;
+        Sale invoiceSale = null;
 
-    try (Connection conexion = db_connect.getConnection();
-         PreparedStatement ps = conexion.prepareStatement(query)) {
+        try (Connection conexion = db_connect.getConnection(); PreparedStatement ps = conexion.prepareStatement(query)) {
 
-        ps.setInt(1, saleId);
-        ResultSet rs = ps.executeQuery();
+            ps.setInt(1, saleId);
+            ResultSet rs = ps.executeQuery();
 
-        if (rs.next()) {
-            int idSale = rs.getInt("id_sale");
-            LocalDate date = rs.getObject("date", LocalDate.class);
-            String nameCustomer = rs.getString("nameCustomer");
-            String address = rs.getString("Address");
-            String email = rs.getString("Email");
-            String phoneNumber = rs.getString("PhoneNumber");
-            String employeeName = rs.getString("EmployeeName");
-            String make = rs.getString("Make");
-            String brand = rs.getString("Brand");
-            int totalprices = rs.getInt("Prices");
+            if (rs.next()) {
+                int idSale = rs.getInt("id_sale");
+                LocalDate date = rs.getObject("date", LocalDate.class);
 
-            VehicleWeb vehicle = new VehicleWeb();
-            vehicle.setMake(make != null ? make : "");
-            vehicle.setBrand(brand != null ? brand : "");
-            vehicle.setPrices(totalprices);
+                String employeeName = rs.getString("Employee_Name");
+                String address = rs.getString("offices");
+                int id_employee=rs.getInt("id_employee");
 
-            EmployeeWeb employee = new EmployeeWeb();
-            employee.setName(employeeName != null ? employeeName : "");
+                String make = rs.getString("Make");
+                String brand = rs.getString("Brand");
+                int totalPrices = rs.getInt("Prices");
+                String year = rs.getString("Year");
+                String color= rs.getString("Color");
+                String warrantyTime= rs.getString("WarrantyTime");
+                String miliage= rs.getString("Miliage");
+                String typeCar= rs.getString("Type_car");
 
-            CustomerWeb customer = new CustomerWeb();
-            customer.setName(nameCustomer != null ? nameCustomer : "");
-            customer.setAddress(address != null ? address : "");
-            customer.setEmail(email != null ? email : "");
-            customer.setPhoneNumber(phoneNumber != null ? phoneNumber : "");
+                String nameCustomer = rs.getString("Customer_Name");
+                String email = rs.getString("Email");
+                String phoneNumber = rs.getString("PhoneNumber");
 
-            invoiceSale = new Sale();
-            invoiceSale.setCarId(idSale);
-            invoiceSale.setDate(date);
-            invoiceSale.setCustomer(customer);
-            invoiceSale.setEmployee(employee);
-            invoiceSale.setVehicle(vehicle);
+                VehicleWeb vehicle = new VehicleWeb();
+                vehicle.setMake(make != null ? make : "");
+                vehicle.setBrand(brand != null ? brand : "");
+                vehicle.setYear(year != null ? year : "");
+                vehicle.setColor(color != null ? color : "");
+                vehicle.setWarrantyTime(warrantyTime != null ? warrantyTime : "");
+                vehicle.setMiliage(miliage != null ? miliage : "");
+                vehicle.setTypeCar(typeCar != null ? typeCar : "");
+                vehicle.setPrices(totalPrices);
+
+                EmployeeWeb employee = new EmployeeWeb();
+                employee.setName(employeeName != null ? employeeName : "");
+                employee.setAddress(address != null ? address : "");
+                employee.setIdEmployee(id_employee);
+                
+                CustomerWeb customer = new CustomerWeb();
+                customer.setName(nameCustomer != null ? nameCustomer : "");
+                customer.setAddress(address != null ? address : "");
+                customer.setEmail(email != null ? email : "");
+                customer.setPhoneNumber(phoneNumber != null ? phoneNumber : "");
+
+                invoiceSale = new Sale();
+                invoiceSale.setIdSale(idSale);
+                invoiceSale.setDate(date);
+                invoiceSale.setCustomer(customer);
+                invoiceSale.setEmployee(employee);
+                invoiceSale.setVehicle(vehicle);
+            }
+            System.out.println("imprimir el id de la compra " + invoiceSale.getIdSale());
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            throw new SQLException("Error en la consulta de la factura.", ex);
         }
 
-    } catch (SQLException ex) {
-        System.out.println(ex);
-        throw new SQLException("Error en la consulta de la factura.", ex);
+        return invoiceSale;
     }
+    
+    public static void GetEmployee(int employeeId){
+        includeDriver();
+        
+        Conexion db_connect = new Conexion();
+        
+        String query= "select concat(id_employee, '-', name) as id_name\n" +
+        "from employee";
 
-    return invoiceSale;
+        try (Connection conexion = db_connect.getConnection(); 
+        PreparedStatement ps = conexion.prepareStatement(query)) {
+
+            ps.setInt(1,employeeId );
+            ResultSet rs = ps.executeQuery();
+        
+    } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+       
+}
 }
 
-}

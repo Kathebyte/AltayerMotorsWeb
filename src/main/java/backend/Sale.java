@@ -102,5 +102,5 @@ public class Sale {
         this.customer = customer;
     }
 
-   
+  
 }

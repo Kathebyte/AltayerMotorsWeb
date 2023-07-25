@@ -32,6 +32,7 @@
                         <th scope="col">Vehicle Brand</th>
                         <th scope="col">Vehicle Prices</th>
                         <th scope="col">Customer Name</th>
+                        <th scope="col" >Actions</th>
                     </tr>
                 </thead>
                 <tbody>

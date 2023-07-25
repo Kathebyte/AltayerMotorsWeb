@@ -124,6 +124,17 @@ public class VehicleWeb {
         this.accidentHistory = accidentHistory;
     }
 
+     public static Double calculateTotalWithVAT(int prices){
+    Double vat=0.05;
+    Double totalCar= prices + (prices * vat);
+    return totalCar;
+   }
+     
+      public static Double calculateVAT(int prices){
+    Double vat=0.05;
+    Double totalVat= (prices * vat);
+    return totalVat;
+   }
 }
     
 
