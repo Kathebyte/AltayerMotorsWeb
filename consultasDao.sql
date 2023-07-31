@@ -84,7 +84,7 @@ set name = ?,
     state=?
 where id_employee=?;
 
-select id_employee,emploname,phone_number,address,email,user,job_position.name as job_position,salary,state
+select id_employee,employee.name,phone_number,address,email,user,job_position.name as job_position,salary,state
 from employee
 inner join job_position on employee.id_job_position = job_position.id_job_position;
 
