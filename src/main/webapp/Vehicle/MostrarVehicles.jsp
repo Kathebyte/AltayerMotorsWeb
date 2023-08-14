@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : MostrarVehicles
     Created on : 22 Apr 2023, 5:12:59 PM
     Author     : kathemacbook
@@ -55,7 +55,7 @@
                         <td> <%=vehiculo.getPrices()%></td>
                         <td> <%=vehiculo.getMiliage()%></td>
                         <td> <%=vehiculo.getWarrantyTime()%></td>
-                        <td> 
+                        <td>
                             <% if (vehiculo.getAccidentHistory() == 0) { %>
                                 <span class="badge bg-danger">Not</span>
                             <% } else if (vehiculo.getAccidentHistory() == 1) { %>
@@ -82,14 +82,11 @@
                 </tbody>
             </table>
                     <div class="btn-group">
-<!--                    <form action="Create" method="POST">
-                <a href=VehicleForm.jsp class="btn btn-primary" aria-current="page">Create Vehicle</a>
-                    </form>
-                    </div>  -->
-       
+
+
 
             <div class="btn-group">
-                <a href="/AltayerMotorsWeb" class="btn btn-primary" aria-current="page">Menu</a>
+                <a href="../index.html" class="btn btn-primary" aria-current="page">Menu</a>
             </div>
 
         </div>
